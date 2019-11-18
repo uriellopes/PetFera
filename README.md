@@ -1,2 +1,3 @@
-# PetFera
-Projeto Final de LP1
+# PETFERA
+Projeto Final de LPI
+Alunos: Uriel Lira Lopes e Manuel Jonas Fonseca Barbalho
