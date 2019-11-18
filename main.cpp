@@ -2,8 +2,8 @@
 #include <vector>
 
 class Parent {
-private:
-	int id;
+protected:
+	int id = 30;
 public:
 	virtual void print() = 0;
 };  
@@ -12,25 +12,42 @@ void Parent::print() {
 	std::cout << "Printing!";
 }
 
-class Type1 : public Parent {
+class Type1 : public virtual Parent {
     protected:
-    	int teste;
+    	int teste = 78;
     public:
     	virtual void print() = 0;
 };
 
-class Type1Filho : public Type1 {
+class Type1Filho : public virtual Type1 {
 private:
-	int asd;
+	int asd = 80;
 public:
+	Type1Filho();
+	Type1Filho(int a, int t);
+	~Type1Filho();
 	void print();
+
+	friend std::ostream& operator<< (std::ostream &o, Type1Filho const t);
 };
 
-void Type1Filho::print() {
-	teste = 78;
-	asd = 80;
-	std::cout << teste << "Tipo 1 filho" << asd << std::endl;
+Type1Filho::Type1Filho() {
+
 }
+
+Type1Filho::Type1Filho(int a, int t) {
+	asd = a;
+	teste = t;
+}
+
+void Type1Filho::print() {
+	std::cout << teste << "id " << id << "Tipo 1 filho" << asd << std::endl;
+}
+
+// std::ostream& operator<< (std::ostream &o, Type1Filho const t) {
+// 	o << t.teste << "Tipo 1 filho" << t.asd << std::endl;
+// 	return o;
+// }
 
 class Type2 : public Parent {
 	private:
@@ -56,17 +73,17 @@ void Type3::print() {
 
 template <typename T>
 class Pilha {
-private:
+public:
 	T* m_elementos; // Elementos armazenados na pilha
 	int m_tamanho; // Qtde atual de elementos
 	int m_capacidade; // Qtde Max de elementos
-public:
+//public:
 	Pilha (int n_capacidade = 50);
 	~Pilha ();
 	bool empty ();
 	bool full ();
 	T& top ();
-	int push ( T novo );
+	void push ( T novo );
 	int pop ();
 	int size();
 	T &operator[] (int);
@@ -91,13 +108,36 @@ bool Pilha<T>::full ()
 }
 
 template <typename T>
-int Pilha<T>::push ( T novo )
+void Pilha<T>::push ( T novo )
 {
-	if (full())
-		return 0;
-	m_elementos[m_tamanho++] =
-	novo;
-	return 1;
+	m_tamanho = m_tamanho + 1;
+	int newSize = m_tamanho;
+
+	T *temp = new T[newSize];
+
+	for(int i = 0; i < newSize; i++) {
+		temp[i] = m_elementos[i];
+		// std::cout << i << std::endl;
+	}
+
+	m_elementos = new T[newSize];
+
+	for(int i = 0; i < newSize; i++) {
+		m_elementos[i] = temp[i];
+		//std::cout << i << std::endl;
+	}
+
+	m_elementos[m_tamanho - 1] = novo;
+
+	//std::cout << novo << std::endl;
+
+	delete[] temp;
+
+	// if (full())
+	// 	return 0;
+	// m_elementos[m_tamanho++] =
+	// novo;
+	// return 1;
 }
 
 template <typename T>
@@ -105,9 +145,9 @@ T &Pilha<T>::operator[](int index)
 { 
     if (index >= m_tamanho) 
     { 
-        std::cout << "Array index out of bound, exiting"; 
+        std::cout << "Array index out of bound, exiting" << index << std::endl; 
         exit(0); 
-    } 
+    }
     return m_elementos[index]; 
 }
 
@@ -116,15 +156,19 @@ int main() {
 
 	Pilha<Parent*> vec;
 
+	//std::cout << vec.m_tamanho << std::endl;
+	vec.push(new Type1Filho(20,20));
+	//std::cout << vec.m_tamanho << std::endl;
 	vec.push(new Type1Filho);
-	// vec.push(new Type2);
-	// vec.push(new Type3);
+	//std::cout << vec.m_tamanho << std::endl;
+	vec.push(new Type3);
 
 	vec[0]->print();
-	// vec[1]->print();
+	vec[1]->print();
+	vec[2]->print();
 	// vec[2]->print();
 
-	std::cout << "ola" << std::endl;
+	//std::cout << vec.m_tamanho << std::endl;
 
 	return 0;
 }
