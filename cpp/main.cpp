@@ -28,6 +28,16 @@ void lerDados(std::vector<Animal> &animais) {
     file_animais.close();
 }
 
+void salvarDados(std::vector<Animal> &animais) {
+
+    std::ofstream file_animais("animais.csv");
+
+    for (unsigned i = 0; i < animais.size(); i++) {
+        file_animais << animais[i].getId() << std::endl;
+    }
+    file_animais.close();
+}
+
 int main() {
 
 	std::vector<Animal> animais;
@@ -39,6 +49,8 @@ int main() {
 	std::cout << animais[0].getId() << std::endl;
 	std::cout << animais[1].getId() << std::endl;
 	std::cout << animais[2].getId() << std::endl;
+
+	salvarDados(animais);
 
 	return 0;
 }
