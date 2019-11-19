@@ -1,22 +1,33 @@
 #include <iostream>
+using std::cin;
+using std::cout;
+using std::endl;
+
 #include <sstream>
+using std::stringstream;
+
 #include <fstream>
+using std::ofstream;
+using std::ifstream;
+
 #include <vector>
+using std::vector;
+
 #include "../includes/animal.h"
 #include "../includes/tratador.h"
 #include "../includes/veterinario.h"
 
-void lerDados(std::vector<Animal> &animais) {
+void lerDados(vector<Animal> &animais) {
     
-    std::ifstream file_animais("animais.csv");
+    ifstream file_animais("animais.csv");
 
-    std::vector<std::string> values;
-    std::string line, value;
+    vector<string> values;
+    string line, value;
 
     while(!file_animais.eof()) {
         getline(file_animais, line);
         if ( !line.empty() ) {
-            std::stringstream temp(line);
+            stringstream temp(line);
             values.clear();
             while(getline(temp, value, ';')) {
                 values.push_back(value);
@@ -28,27 +39,28 @@ void lerDados(std::vector<Animal> &animais) {
     file_animais.close();
 }
 
-void salvarDados(std::vector<Animal> &animais) {
+void salvarDados(vector<Animal> &animais) {
 
-    std::ofstream file_animais("animais.csv");
+    ofstream file_animais("animais.csv");
 
     for (unsigned i = 0; i < animais.size(); i++) {
-        file_animais << animais[i].getId() << std::endl;
+        file_animais << animais[i] << endl;
     }
+
     file_animais.close();
 }
 
 int main() {
 
-	std::vector<Animal> animais;
-	std::vector<Tratador> tratadores;
-	std::vector<Veterinario> veterinarios;
+	vector<Animal> animais;
+	vector<Tratador> tratadores;
+	vector<Veterinario> veterinarios;
 
 	lerDados(animais);
 
-	std::cout << animais[0].getId() << std::endl;
-	std::cout << animais[1].getId() << std::endl;
-	std::cout << animais[2].getId() << std::endl;
+	cout << animais[0].getId() << endl;
+	cout << animais[1].getId() << endl;
+	cout << animais[2].getId() << endl;
 
 	salvarDados(animais);
 

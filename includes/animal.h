@@ -17,6 +17,7 @@ public:
 	Animal(int c_id);
 	~Animal();
 	int getId();
+	friend std::ostream& operator<< (std::ostream &o, Animal const a);
 };
 
 Animal::Animal(int c_id) {
@@ -27,4 +28,9 @@ Animal::~Animal() {}
 
 int Animal::getId() {
 	return id;
+}
+
+std::ostream& operator<< (std::ostream &o, Animal const a) {
+    o << a.id << ";TESTANDO PARA VER SE DEU CERTO";
+    return o;
 }
