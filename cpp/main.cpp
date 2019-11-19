@@ -3,6 +3,8 @@ using std::cin;
 using std::cout;
 using std::endl;
 
+#include <string>
+
 #include <sstream>
 using std::stringstream;
 
@@ -32,7 +34,10 @@ void lerDados(vector<Animal> &animais) {
             while(getline(temp, value, ';')) {
                 values.push_back(value);
             }
-            animais.push_back(Animal(stoi(values[0])));
+            animais.push_back(
+            	Animal(stoi(values[0]), values[1], values[2], values[3], *values[4].c_str(), 
+            		stod(values[5]), values[6], stoi(values[7]), stoi(values[8]), values[9])
+            	);
         }
     }
 
@@ -58,9 +63,9 @@ int main() {
 
 	lerDados(animais);
 
-	cout << animais[0].getId() << endl;
-	cout << animais[1].getId() << endl;
-	cout << animais[2].getId() << endl;
+	cout << animais[0] << endl;
+	cout << animais[1] << endl;
+	cout << animais[2] << endl;
 
 	salvarDados(animais);
 
