@@ -1,6 +1,6 @@
 #include "funcionario.h"
 
-class Veterinario : virtual public Funcionario {
+class Veterinario : public Funcionario {
 private:
 	string crmv;
 };
