@@ -29,7 +29,7 @@ create:
 $(PROJ): $(OBJS)
 	$(CC) $(FLAGS) -o $@ $(OBJS)
 
-$(FILE_OBJ)main.o: $(FILE_CPP)main.cpp
+$(FILE_OBJ)main.o: $(FILE_CPP)main.cpp $(FILE_INC)animal.h $(FILE_INC)tratador.h $(FILE_INC)veterinario.h
 	$(CC) $(FLAGS) $(OBJ_FLAG)
 
 run:
