@@ -18,8 +18,11 @@ FLAGS = -std=c++11 -Wall -pedantic -g -O0
 #flags dos .o
 OBJ_FLAG = -c $< -o $@
 
+FUNC_FILES = $(FILE_OBJ)funcionario.o $(FILE_OBJ)tratador.o $(FILE_OBJ)veterinario.o
+ANIM_FILES = $(FILE_OBJ)animal.o
+
 #.o para criar o executavel
-OBJS = $(FILE_OBJ)main.o $(FILE_OBJ)funcionario.o $(FILE_OBJ)tratador.o $(FILE_OBJ)veterinario.o
+OBJS = $(FILE_OBJ)main.o $(FUNC_FILES) $(ANIM_FILES) $(FILE_OBJ)anfibio.o
 
 all: create $(PROJ)
 
@@ -39,6 +42,12 @@ $(FILE_OBJ)tratador.o: $(FILE_CPP)tratador.cpp $(FILE_INC)tratador.h
 	$(CC) $(FLAGS) $(OBJ_FLAG)
 
 $(FILE_OBJ)veterinario.o: $(FILE_CPP)veterinario.cpp $(FILE_INC)veterinario.h
+	$(CC) $(FLAGS) $(OBJ_FLAG)
+
+$(FILE_OBJ)animal.o: $(FILE_CPP)animal.cpp $(FILE_INC)animal.h
+	$(CC) $(FLAGS) $(OBJ_FLAG)
+
+$(FILE_OBJ)anfibio.o: $(FILE_CPP)anfibio.cpp $(FILE_INC)anfibio.h
 	$(CC) $(FLAGS) $(OBJ_FLAG)
 
 run:

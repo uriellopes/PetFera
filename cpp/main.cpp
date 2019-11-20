@@ -3,8 +3,6 @@ using std::cin;
 using std::cout;
 using std::endl;
 
-// #include <string>
-
 #include <sstream>
 using std::stringstream;
 
@@ -15,7 +13,6 @@ using std::ifstream;
 #include <vector>
 using std::vector;
 
-//#include "../includes/animal.h"
 #include "../includes/tratador.h"
 #include "../includes/veterinario.h"
 
@@ -57,7 +54,6 @@ void salvarDados(vector<Tratador> &t) {
 
 int main() {
 
-	//vector<Animal> animais;
 	vector<Tratador> tratadores;
 	vector<Veterinario> veterinarios;
 
@@ -65,9 +61,6 @@ int main() {
 
 	tratadores.push_back(Tratador(1,"João Alberto","007.404.200-98",45,"AB",'-',"Répteis e Aves",1));
 	veterinarios.push_back(Veterinario(2,"Daniel Oscar","123.456.789-10",30,"O",'+',"Felinos","CRMV-GO 0406"));
-	// cout << animais[0] << endl;
-	// cout << animais[1] << endl;
-	// cout << animais[2] << endl;
 
 	salvarDados(tratadores);
 
