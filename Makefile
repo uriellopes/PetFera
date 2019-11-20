@@ -25,7 +25,7 @@ ANIM_FILES = $(FILE_OBJ)animal.o $(FILE_OBJ)animalsilvestre.o $(FILE_OBJ)animaln
 ANF_FILES = $(FILE_OBJ)anfibio.o $(FILE_OBJ)anfibionativo.o $(FILE_OBJ)anfibioexotico.o
 MAN_FILES = $(FILE_OBJ)mamifero.o $(FILE_OBJ)mamiferonativo.o $(FILE_OBJ)mamiferoexotico.o
 REP_FILES = $(FILE_OBJ)reptil.o $(FILE_OBJ)reptilnativo.o $(FILE_OBJ)reptilexotico.o
-AVE_FILES = $(FILE_OBJ)ave.o
+AVE_FILES = $(FILE_OBJ)ave.o $(FILE_OBJ)avenativa.o $(FILE_OBJ)aveexotica.o
 
 #.o para criar o executavel
 OBJS = $(FILE_OBJ)main.o $(FUNC_FILES) $(ANIM_FILES) $(ANF_FILES) $(MAN_FILES) $(REP_FILES) $(AVE_FILES)
@@ -90,6 +90,12 @@ $(FILE_OBJ)reptilexotico.o: $(FILE_CPP)reptilexotico.cpp $(FILE_INC)reptilexotic
 	$(CC) $(FLAGS) $(OBJ_FLAG)
 
 $(FILE_OBJ)ave.o: $(FILE_CPP)ave.cpp $(FILE_INC)ave.h
+	$(CC) $(FLAGS) $(OBJ_FLAG)
+
+$(FILE_OBJ)avenativa.o: $(FILE_CPP)avenativa.cpp $(FILE_INC)avenativa.h
+	$(CC) $(FLAGS) $(OBJ_FLAG)
+
+$(FILE_OBJ)aveexotica.o: $(FILE_CPP)aveexotica.cpp $(FILE_INC)aveexotica.h
 	$(CC) $(FLAGS) $(OBJ_FLAG)
 
 run:
