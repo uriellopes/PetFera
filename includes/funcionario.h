@@ -9,10 +9,13 @@ protected:
 	int id;
 	string nome;
 	string cpf;
-	short idade;
-	char sangue[2];
-	char rh;
+	int idade;
+	string tipo_sanguineio;
+	char fator_rh;
 	string especialidade;
+public:
+	Funcionario();
+	~Funcionario();
 };
 
 #endif
