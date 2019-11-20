@@ -1,3 +1,5 @@
 exec
 teste.cpp
 obj/
+teste.csv
+.vscode/
