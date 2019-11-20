@@ -15,4 +15,6 @@ Anfibio::Anfibio(int a, string b, string c,	string d, char e, double f, string g
 	ultima_muda = l;
 }
 
+Anfibio::Anfibio() {}
+
 Anfibio::~Anfibio() {}
