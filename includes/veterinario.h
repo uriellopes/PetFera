@@ -9,6 +9,7 @@ private:
 public:
 	Veterinario(int, string, string, int, string, char, string, string);
 	~Veterinario();
+	friend std::ostream& operator<< (std::ostream &o, Veterinario const t);
 };
 
 #endif

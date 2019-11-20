@@ -16,7 +16,7 @@ using std::vector;
 #include "../includes/tratador.h"
 #include "../includes/veterinario.h"
 
-void lerDados(vector<Tratador> &t) {
+void lerDados(vector<Tratador> &t, vector<Veterinario> &v) {
     
     ifstream file_animais("funcionarios.csv");
 
@@ -41,15 +41,19 @@ void lerDados(vector<Tratador> &t) {
     file_animais.close();
 }
 
-void salvarDados(vector<Tratador> &t) {
+void salvarDados(vector<Tratador> &t, vector<Veterinario> &v) {
 
-    ofstream file_animais("funcionarios.csv");
+    ofstream file_funcionarios("funcionarios.csv");
 
-    // for (unsigned i = 0; i < animais.size(); i++) {
-    //     file_animais << animais[i] << endl;
-    // }
+    for (unsigned i = 0; i < t.size(); i++) {
+        file_funcionarios << t[i] << endl;
+    }
 
-    file_animais.close();
+    for (unsigned i = 0; i < v.size(); i++) {
+        file_funcionarios << v[i] << endl;
+    }
+
+    file_funcionarios.close();
 }
 
 int main() {
@@ -57,12 +61,12 @@ int main() {
 	vector<Tratador> tratadores;
 	vector<Veterinario> veterinarios;
 
-	lerDados(tratadores);
+	lerDados(tratadores, veterinarios);
 
 	tratadores.push_back(Tratador(1,"João Alberto","007.404.200-98",45,"AB",'-',"Répteis e Aves",1));
 	veterinarios.push_back(Veterinario(2,"Daniel Oscar","123.456.789-10",30,"O",'+',"Felinos","CRMV-GO 0406"));
 
-	salvarDados(tratadores);
+	salvarDados(tratadores, veterinarios);
 
 	return 0;
 }

@@ -9,6 +9,7 @@ private:
 public:
 	Tratador(int, string, string, int, string, char, string, int);
 	~Tratador();
+	friend std::ostream& operator<< (std::ostream &o, Tratador const t);
 };
 
 #endif
