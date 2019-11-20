@@ -18,11 +18,13 @@ FLAGS = -std=c++11 -Wall -pedantic -g -O0
 #flags dos .o
 OBJ_FLAG = -c $< -o $@
 
+
+#flags de cada grupo de animal e funcionario
 FUNC_FILES = $(FILE_OBJ)funcionario.o $(FILE_OBJ)tratador.o $(FILE_OBJ)veterinario.o
 ANIM_FILES = $(FILE_OBJ)animal.o $(FILE_OBJ)animalsilvestre.o $(FILE_OBJ)animalnativo.o $(FILE_OBJ)animalexotico.o
 ANF_FILES = $(FILE_OBJ)anfibio.o $(FILE_OBJ)anfibionativo.o $(FILE_OBJ)anfibioexotico.o
 MAN_FILES = $(FILE_OBJ)mamifero.o $(FILE_OBJ)mamiferonativo.o $(FILE_OBJ)mamiferoexotico.o
-REP_FILES = $(FILE_OBJ)reptil.o
+REP_FILES = $(FILE_OBJ)reptil.o $(FILE_OBJ)reptilnativo.o $(FILE_OBJ)reptilexotico.o
 AVE_FILES = $(FILE_OBJ)ave.o
 
 #.o para criar o executavel
@@ -79,6 +81,12 @@ $(FILE_OBJ)mamiferoexotico.o: $(FILE_CPP)mamiferoexotico.cpp $(FILE_INC)mamifero
 	$(CC) $(FLAGS) $(OBJ_FLAG)
 
 $(FILE_OBJ)reptil.o: $(FILE_CPP)reptil.cpp $(FILE_INC)reptil.h
+	$(CC) $(FLAGS) $(OBJ_FLAG)
+
+$(FILE_OBJ)reptilnativo.o: $(FILE_CPP)reptilnativo.cpp $(FILE_INC)reptilnativo.h
+	$(CC) $(FLAGS) $(OBJ_FLAG)
+
+$(FILE_OBJ)reptilexotico.o: $(FILE_CPP)reptilexotico.cpp $(FILE_INC)reptilexotico.h
 	$(CC) $(FLAGS) $(OBJ_FLAG)
 
 $(FILE_OBJ)ave.o: $(FILE_CPP)ave.cpp $(FILE_INC)ave.h
