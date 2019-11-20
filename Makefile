@@ -20,7 +20,8 @@ OBJ_FLAG = -c $< -o $@
 
 FUNC_FILES = $(FILE_OBJ)funcionario.o $(FILE_OBJ)tratador.o $(FILE_OBJ)veterinario.o
 ANIM_FILES = $(FILE_OBJ)animal.o $(FILE_OBJ)animalsilvestre.o $(FILE_OBJ)animalnativo.o $(FILE_OBJ)animalexotico.o
-ANF_FILES = $(FILE_OBJ)anfibio.o $(FILE_OBJ)anfibionativo.o
+ANF_FILES = $(FILE_OBJ)anfibio.o $(FILE_OBJ)anfibionativo.o $(FILE_OBJ)anfibioexotico.o
+MAN_FILES = $(FILE_OBJ)mamifero.o
 
 #.o para criar o executavel
 OBJS = $(FILE_OBJ)main.o $(FUNC_FILES) $(ANIM_FILES) $(ANF_FILES)
@@ -61,6 +62,9 @@ $(FILE_OBJ)anfibio.o: $(FILE_CPP)anfibio.cpp $(FILE_INC)anfibio.h
 	$(CC) $(FLAGS) $(OBJ_FLAG)
 
 $(FILE_OBJ)anfibionativo.o: $(FILE_CPP)anfibionativo.cpp $(FILE_INC)anfibionativo.h
+	$(CC) $(FLAGS) $(OBJ_FLAG)
+
+$(FILE_OBJ)anfibioexotico.o: $(FILE_CPP)anfibioexotico.cpp $(FILE_INC)anfibioexotico.h
 	$(CC) $(FLAGS) $(OBJ_FLAG)
 
 run:
