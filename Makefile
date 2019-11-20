@@ -21,10 +21,10 @@ OBJ_FLAG = -c $< -o $@
 FUNC_FILES = $(FILE_OBJ)funcionario.o $(FILE_OBJ)tratador.o $(FILE_OBJ)veterinario.o
 ANIM_FILES = $(FILE_OBJ)animal.o $(FILE_OBJ)animalsilvestre.o $(FILE_OBJ)animalnativo.o $(FILE_OBJ)animalexotico.o
 ANF_FILES = $(FILE_OBJ)anfibio.o $(FILE_OBJ)anfibionativo.o $(FILE_OBJ)anfibioexotico.o
-MAN_FILES = $(FILE_OBJ)mamifero.o
+MAN_FILES = $(FILE_OBJ)mamifero.o $(FILE_OBJ)mamiferonativo.o $(FILE_OBJ)mamiferoexotico.o
 
 #.o para criar o executavel
-OBJS = $(FILE_OBJ)main.o $(FUNC_FILES) $(ANIM_FILES) $(ANF_FILES)
+OBJS = $(FILE_OBJ)main.o $(FUNC_FILES) $(ANIM_FILES) $(ANF_FILES) $(MAN_FILES)
 
 all: create $(PROJ)
 
@@ -65,6 +65,15 @@ $(FILE_OBJ)anfibionativo.o: $(FILE_CPP)anfibionativo.cpp $(FILE_INC)anfibionativ
 	$(CC) $(FLAGS) $(OBJ_FLAG)
 
 $(FILE_OBJ)anfibioexotico.o: $(FILE_CPP)anfibioexotico.cpp $(FILE_INC)anfibioexotico.h
+	$(CC) $(FLAGS) $(OBJ_FLAG)
+
+$(FILE_OBJ)mamifero.o: $(FILE_CPP)mamifero.cpp $(FILE_INC)mamifero.h
+	$(CC) $(FLAGS) $(OBJ_FLAG)
+
+$(FILE_OBJ)mamiferonativo.o: $(FILE_CPP)mamiferonativo.cpp $(FILE_INC)mamiferonativo.h
+	$(CC) $(FLAGS) $(OBJ_FLAG)
+
+$(FILE_OBJ)mamiferoexotico.o: $(FILE_CPP)mamiferoexotico.cpp $(FILE_INC)mamiferoexotico.h
 	$(CC) $(FLAGS) $(OBJ_FLAG)
 
 run:
