@@ -165,7 +165,68 @@ void salvarDados(vector<shared_ptr<Funcionario>> &f, vector<shared_ptr<Animal>> 
 }
 
 //Menu de animais
-void menuAnimal() {}
+void menuAnimal(vector<shared_ptr<Animal>> &a) {
+    string input;
+    int escolha;
+    bool sair = false, error = false;
+
+    //Loop para verificar se o input é uma opção válida e caso seja, realizer a operação referente a escolha
+    do {
+        clear();
+        cout << endl << "########################################################" << endl;
+        cout << "###                      ANIMAIS                     ###" << endl;
+        cout << "########################################################" << endl;
+        cout << endl << "Escolha uma das seguintes opcoes: " << endl << endl;
+        cout << "[1] - Adicionar novo animal" << endl;
+        cout << "[2] - Remover animal" << endl;
+        cout << "[4] - Alterar dados de um animal" << endl;
+        cout << "[5] - Consultar animal" << endl;
+        cout << "[6] - Mostrar animais" << endl;
+        cout << endl;
+        cout << "[0] - Sair" << endl << endl;
+
+        if (error) {
+            error = false;
+            cout << "**Digite uma opcao valida!**" << endl;
+        }
+        cout << "Opcao: ";
+        cin >> input;
+
+        if (checarDigito(input)) {
+            escolha = stoi(input, nullptr);
+
+            if (escolha >= 0 && escolha <= 6) {
+                switch (escolha) {
+                case 0:
+                    sair = true;
+                    break;
+                case 1:
+                    //
+                    break;
+                case 2:
+                    //
+                    break;
+                case 3:
+                    //
+                    break;
+                case 4:
+                    //
+                    break;
+                case 5:
+                    //
+                    break;
+                case 6:
+                    //
+                    break;
+                }
+            } else {
+                error = true;
+            }
+        } else {
+            error = true;
+        }
+    } while (!sair);
+}
 
 //Função para cadastrar um tratador
 void novoTratador(vector<shared_ptr<Funcionario>> &f) {
@@ -425,7 +486,7 @@ void menuFuncionarios(vector<shared_ptr<Funcionario>> &f) {
 }
 
 //Função que mostra o menu principal
-void menuPrincipal(vector<shared_ptr<Funcionario>> &f) {
+void menuPrincipal(vector<shared_ptr<Funcionario>> &f, vector<shared_ptr<Animal>> &a) {
     string input;
     int escolha;
     bool sair = false, error = false;
@@ -458,7 +519,7 @@ void menuPrincipal(vector<shared_ptr<Funcionario>> &f) {
                     sair = true;
                     break;
                 case 1:
-                    menuAnimal();
+                    menuAnimal(a);
                     break;
                 case 2:
                     menuFuncionarios(f);
@@ -480,7 +541,7 @@ int main() {
 
 	lerDados(funcionarios, animais);
 
-    menuPrincipal(funcionarios);
+    menuPrincipal(funcionarios, animais);
 
 	salvarDados(funcionarios, animais);
 

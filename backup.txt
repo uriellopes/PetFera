@@ -1,7 +1,16 @@
-1;Mammalia;Leão;Panthera leo;M;2;Carne;0;1;Simba
-1123;Mammalia;Leão;Panthera leo;M;2;Carne;0;1;Simba
-132;Mammalia;Leão;Panthera leo;M;2;Carne;0;1;Simba
-123121;Mammalia;Leão;Panthera leo;M;2;Carne;0;1;Simba
+0;1;Mamifero;Leão;Lionius;M;2;Carnes;1;2;Simba;Marrom
+1;2;Anfibio;Leão;Lionius;M;2;Carnes;1;2;Simba;4;Marrom
+2;3;Ave;Leão;Lionius;M;2;Carnes;1;2;Simba;20;30
+3;4;Reptil;Leão;Lionius;M;2;Carnes;1;2;Simba;1;Marrom
+4;5;Mamifero;Leão;Lionius;M;2;Carnes;1;2;Simba;Marrom;Africa;SIM;SIM
+5;6;Mamifero;Leão;Lionius;M;2;Carnes;1;2;Simba;Marrom;Brasil;SIM
+6;7;Anfibio;Leão;Lionius;M;2;Carnes;1;2;Simba;4;Marrom;RN;SIM;SIM
+7;8;Anfibio;Leão;Lionius;M;2;Carnes;1;2;Simba;4;Marrom;Australia;SIM
+8;9;Ave;Leão;Lionius;M;2;Carnes;1;2;Simba;20;30;PB;SIM;SIM
+9;10;Ave;Leão;Lionius;M;2;Carnes;1;2;Simba;20;30;AM;SIM
+10;11;Reptil;Leão;Lionius;M;2;Carnes;1;2;Simba;1;Marrom;RN;SIM;SIM
+11;12;Reptil;Leão;Lionius;M;2;Carnes;1;2;Simba;1;Marrom;Russia;SIM
+
 
 0;1;João Alberto;007.404.200-98;45;AB;-;Répteis e Aves;1
 1;2;Daniel Oscar;123.456.789-10;30;O;+;Felinos;CRMV-GO 0406
