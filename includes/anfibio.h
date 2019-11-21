@@ -11,6 +11,7 @@ public:
 	Anfibio(int, string, string, string, char, double, string, int, int, string, int, string);
 	Anfibio();
 	~Anfibio();
+	void print(std::ostream &o);
 };
 
 #endif

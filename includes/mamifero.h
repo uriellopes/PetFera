@@ -10,6 +10,7 @@ public:
     Mamifero(int, string, string, string, char, double, string, int, int, string, string);
     Mamifero();
     ~Mamifero();
+    void print(std::ostream &o);
 };
 
 #endif

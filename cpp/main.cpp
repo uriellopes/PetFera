@@ -104,6 +104,10 @@ void salvarDados(vector<shared_ptr<Funcionario>> &f, vector<shared_ptr<Animal>> 
 
     ofstream file_animais("animais.csv");
 
+    for (unsigned i = 0; i < a.size(); i++) {
+        file_animais << *a[i] << endl;
+    }
+
     file_animais.close();
 }
 
@@ -424,6 +428,11 @@ int main() {
 	lerDados(funcionarios);
 
     menuPrincipal(funcionarios);
+
+    animais.push_back(shared_ptr<Mamifero>(new Mamifero(1, "Mamifero", "Leão", "Lionius", 'M', 2, "Carnes", 1, 2, "Simba", "Marrom")));
+    animais.push_back(shared_ptr<Anfibio>(new Anfibio(2, "Mamifero", "Leão", "Lionius", 'M', 2, "Carnes", 1, 2, "Simba", 4, "Marrom")));
+    animais.push_back(shared_ptr<Ave>(new Ave(3, "Mamifero", "Leão", "Lionius", 'M', 2, "Carnes", 1, 2, "Simba", 20, 30)));
+    animais.push_back(shared_ptr<Reptil>(new Reptil(4, "Mamifero", "Leão", "Lionius", 'M', 2, "Carnes", 1, 2, "Simba", 1, "Marrom")));
 
 	salvarDados(funcionarios, animais);
 

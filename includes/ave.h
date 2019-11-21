@@ -11,6 +11,7 @@ public:
     Ave(int, string, string, string, char, double, string, int, int, string, double, double);
     Ave();
     ~Ave();
+    void print(std::ostream &o);
 };
 
 #endif

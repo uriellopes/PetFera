@@ -11,6 +11,7 @@ public:
     Reptil(int, string, string, string, char, double, string, int, int, string, bool, string);
     Reptil();
     ~Reptil();
+    void print(std::ostream &o);
 };
 
 #endif
