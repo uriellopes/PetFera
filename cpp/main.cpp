@@ -19,6 +19,31 @@ using std::vector;
 #include "../includes/tratador.h"
 #include "../includes/veterinario.h"
 
+//Verifica o tipo de SO para definir o tipo da variavel para limpar o terminal
+#ifdef _WIN32
+#define LIMPAR "CLS"
+#else
+#define LIMPAR "clear"
+#endif
+
+
+//Função para pressionar enter para continuar
+void clear() {
+    system(LIMPAR);
+}
+
+//Função para checar se o input é um int
+bool checarDigito(string &input) {
+    for (unsigned int i = 0; i < input.size(); i++) {
+        if (!isdigit(input[i])) {
+            return false;
+            break;
+        }
+    }
+    return true;
+}
+
+//Função para ler os dados dos arquivos
 void lerDados(vector<shared_ptr<Funcionario>> &f) {
     
     ifstream file_animais("funcionarios.csv");
@@ -48,6 +73,7 @@ void lerDados(vector<shared_ptr<Funcionario>> &f) {
     file_animais.close();
 }
 
+//Função para salvar os dados nos arquivos
 void salvarDados(vector<shared_ptr<Funcionario>> &f) {
 
     ofstream file_funcionarios("funcionarios.csv");
@@ -59,11 +85,114 @@ void salvarDados(vector<shared_ptr<Funcionario>> &f) {
     file_funcionarios.close();
 }
 
+void menuFuncionarios(vector<shared_ptr<Funcionario>> &f) {
+    string input;
+    int escolha;
+    bool sair = false, error = false;
+
+    //Loop para verificar se o input é uma opção válida e caso seja, realizer a operação referente a escolha
+    do {
+        clear();
+        cout << endl << "#############################################################" << endl;
+        cout << "###                      FUNCIONARIOS                     ###" << endl;
+        cout << "#############################################################" << endl;
+        cout << endl << "Escolha uma das seguintes opcoes: " << endl << endl;
+        cout << "[1] - Adicionar novo funcionario" << endl;
+        cout << "[2] - Remover funcionario" << endl;
+        cout << "[3] - Alterar dados de funcionario" << endl;
+        cout << endl;
+        cout << "[0] - Sair" << endl << endl;
+
+        if (error) {
+            error = false;
+            cout << "**Digite uma opcao valida!**" << endl;
+        }
+        cout << "Opcao: ";
+        cin >> input;
+
+        if (checarDigito(input)) {
+            escolha = stoi(input, nullptr);
+
+            if (escolha >= 0 && escolha <= 3) {
+                switch (escolha) {
+                case 0:
+                    sair = true;
+                    break;
+                case 1:
+                    //
+                    break;
+                case 2:
+                    //
+                    break;
+                case 3:
+                    //
+                    break;
+                }
+            } else {
+                error = true;
+            }
+        } else {
+            error = true;
+        }
+    } while (!sair);
+}
+
+//Função que mostra o menu principal
+void menuPrincipal(vector<shared_ptr<Funcionario>> &f) {
+    string input;
+    int escolha;
+    bool sair = false, error = false;
+
+    //Loop para verificar se o input é uma opção válida e caso seja, realizer a operação referente a escolha
+    do {
+        clear();
+        cout << endl << "############################################################" << endl;
+        cout << "###                      BEM VINDO!!                     ###" << endl;
+        cout << "############################################################" << endl;
+        cout << endl << "Escolha uma das seguintes opcoes: " << endl << endl;
+        cout << "[1] - Animais" << endl;
+        cout << "[2] - Funcionarios" << endl;
+        cout << endl;
+        cout << "[0] - Sair" << endl << endl;
+
+        if (error) {
+            error = false;
+            cout << "**Digite uma opcao valida!**" << endl;
+        }
+        cout << "Opcao: ";
+        cin >> input;
+
+        if (checarDigito(input)) {
+            escolha = stoi(input, nullptr);
+
+            if (escolha >= 0 && escolha <= 2) {
+                switch (escolha) {
+                case 0:
+                    sair = true;
+                    break;
+                case 1:
+                    //
+                    break;
+                case 2:
+                    menuFuncionarios(f);
+                    break;
+                }
+            } else {
+                error = true;
+            }
+        } else {
+            error = true;
+        }
+    } while (!sair);
+}
+
 int main() {
 
     vector<shared_ptr<Funcionario>> funcionarios;
 
 	lerDados(funcionarios);
+
+    menuPrincipal(funcionarios);
 
 	salvarDados(funcionarios);
 

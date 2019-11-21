@@ -2,3 +2,6 @@
 1123;Mammalia;Leão;Panthera leo;M;2;Carne;0;1;Simba
 132;Mammalia;Leão;Panthera leo;M;2;Carne;0;1;Simba
 123121;Mammalia;Leão;Panthera leo;M;2;Carne;0;1;Simba
+
+0;1;João Alberto;007.404.200-98;45;AB;-;Répteis e Aves;1
+1;2;Daniel Oscar;123.456.789-10;30;O;+;Felinos;CRMV-GO 0406
