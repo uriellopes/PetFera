@@ -10,6 +10,7 @@ public:
 	Veterinario(int, string, string, int, string, char, string, string);
 	~Veterinario();
 	void print(std::ostream &o);
+	void atualizarDados();
 };
 
 #endif

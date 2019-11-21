@@ -10,6 +10,7 @@ public:
 	Tratador(int, string, string, int, string, char, string, int);
 	~Tratador();
 	void print(std::ostream &o);
+	void atualizarDados();
 };
 
 #endif

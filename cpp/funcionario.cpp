@@ -8,3 +8,7 @@ std::ostream& operator<< (std::ostream &o, Funcionario &f) {
     f.print(o);
     return o;
 }
+
+int Funcionario::getId() {
+    return id;
+}

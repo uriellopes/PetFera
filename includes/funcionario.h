@@ -10,7 +10,7 @@ protected:
 	string nome;
 	string cpf;
 	int idade;
-	string tipo_sanguineio;
+	string tipo_sanguineo;
 	char fator_rh;
 	string especialidade;
 public:
@@ -18,6 +18,8 @@ public:
 	~Funcionario();
 	friend std::ostream& operator<< (std::ostream &o, Funcionario &f);
 	virtual void print(std::ostream &o) = 0;
+	int getId();
+	virtual void atualizarDados() = 0;
 };
 
 #endif
