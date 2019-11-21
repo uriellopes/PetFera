@@ -3,6 +3,9 @@ using std::cin;
 using std::cout;
 using std::endl;
 
+#include <algorithm>
+using std::find_if;
+
 #include <memory>
 using std::shared_ptr;
 
@@ -96,20 +99,16 @@ void novoTratador(vector<shared_ptr<Funcionario>> &f) {
     int id, idade, nivel_seguranca;
     char fator_rh;
     string nome, cpf, tipo_sanguineo, especialidade;
-    bool existe;
+    vector<shared_ptr<Funcionario>>::iterator it;
 
     cout << "Digite as informaçoes do novo tratador" << endl;
     cout << "ID: ";
     cin >> id;
 
-    for (unsigned i = 0; i < f.size(); i++) {
-        if( f[i]->getId() == id ) {
-            existe = true;
-            break;
-        }
-    }
-
-    if ( !existe ) {
+    it = find_if(f.begin(), f.end(), [&id](const shared_ptr<Funcionario> & obj) {return obj->getId() == id;});
+    if( it != f.end() ) {
+        cout << endl << "Já existe um funcionario cadastrado com esse ID" << endl << endl;
+    } else {
         cout << "Nome: ";
         cin.ignore();
         getline(cin, nome);
@@ -132,8 +131,6 @@ void novoTratador(vector<shared_ptr<Funcionario>> &f) {
         f.push_back(shared_ptr<Tratador>(new Tratador(id, nome, cpf, idade, tipo_sanguineo, fator_rh, especialidade, nivel_seguranca)));
 
         cout << endl << "Novo tratador cadastrado com sucesso!" << endl << endl;
-    } else {
-        cout << endl << "Já existe um funcionario cadastrado com esse ID" << endl << endl;
     }
     cin.ignore();
 }
@@ -143,20 +140,16 @@ void novoVeterinario(vector<shared_ptr<Funcionario>> &f) {
     int id, idade;
     char fator_rh;
     string nome, cpf, tipo_sanguineo, especialidade, crmv;
-    bool existe = false;
+    vector<shared_ptr<Funcionario>>::iterator it;
 
     cout << "Digite as informaçoes do novo tratador" << endl;
     cout << "ID: ";
     cin >> id;
 
-    for (unsigned i = 0; i < f.size(); i++) {
-        if( f[i]->getId() == id ) {
-            existe = true;
-            break;
-        }
-    }
-
-    if ( !existe ) {
+    it = find_if(f.begin(), f.end(), [&id](const shared_ptr<Funcionario> & obj) {return obj->getId() == id;});
+    if( it != f.end() ) {
+        cout << endl << "Já existe um funcionario cadastrado com esse ID" << endl << endl;
+    } else {
         cout << "Nome: ";
         cin.ignore();
         getline(cin, nome);
@@ -179,8 +172,6 @@ void novoVeterinario(vector<shared_ptr<Funcionario>> &f) {
         f.push_back(shared_ptr<Veterinario>(new Veterinario(id, nome, cpf, idade, tipo_sanguineo, fator_rh, especialidade, crmv)));
 
         cout << endl << "Novo veterinario cadastrado com sucesso!" << endl << endl;
-    } else {
-        cout << endl << "Já existe um funcionario cadastrado com esse ID" << endl << endl;
     }
     cin.ignore();
 }
