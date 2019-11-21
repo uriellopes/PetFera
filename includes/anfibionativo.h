@@ -8,6 +8,7 @@ class AnfibioNativo : public Anfibio, public AnimalNativo {
 public:
 	AnfibioNativo(int, string, string, string, char, double, string, int, int, string, int, string, string, string, string);
 	~AnfibioNativo();
+	void print(std::ostream &o);
 };
 
 #endif
