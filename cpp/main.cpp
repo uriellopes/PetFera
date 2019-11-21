@@ -99,13 +99,12 @@ void novoTratador(vector<shared_ptr<Funcionario>> &f) {
     int id, idade, nivel_seguranca;
     char fator_rh;
     string nome, cpf, tipo_sanguineo, especialidade;
-    vector<shared_ptr<Funcionario>>::iterator it;
-
+    
     cout << "Digite as informaçoes do novo tratador" << endl;
     cout << "ID: ";
     cin >> id;
 
-    it = find_if(f.begin(), f.end(), [&id](const shared_ptr<Funcionario> & obj) {return obj->getId() == id;});
+    vector<shared_ptr<Funcionario>>::iterator it = find_if(f.begin(), f.end(), [&id](const shared_ptr<Funcionario> & obj) {return obj->getId() == id;});
     if( it != f.end() ) {
         cout << endl << "Já existe um funcionario cadastrado com esse ID" << endl << endl;
     } else {
@@ -140,13 +139,12 @@ void novoVeterinario(vector<shared_ptr<Funcionario>> &f) {
     int id, idade;
     char fator_rh;
     string nome, cpf, tipo_sanguineo, especialidade, crmv;
-    vector<shared_ptr<Funcionario>>::iterator it;
 
     cout << "Digite as informaçoes do novo tratador" << endl;
     cout << "ID: ";
     cin >> id;
 
-    it = find_if(f.begin(), f.end(), [&id](const shared_ptr<Funcionario> & obj) {return obj->getId() == id;});
+    vector<shared_ptr<Funcionario>>::iterator it = find_if(f.begin(), f.end(), [&id](const shared_ptr<Funcionario> & obj) {return obj->getId() == id;});
     if( it != f.end() ) {
         cout << endl << "Já existe um funcionario cadastrado com esse ID" << endl << endl;
     } else {
@@ -179,41 +177,35 @@ void novoVeterinario(vector<shared_ptr<Funcionario>> &f) {
 //Função para remover um funcionario
 void removerFuncionario(vector<shared_ptr<Funcionario>> &f) {
     int id;
-    bool existe = false;
+
     cout << "Digite o ID do funcionario: ";
     cin >> id;
-    for (unsigned i = 0; i < f.size(); i++) {
-        if( f[i]->getId() == id ) {
-            f.erase(f.begin() + i);
-            existe = true;
-            break;
-        }
-    }
-    if( existe ) {
+
+    vector<shared_ptr<Funcionario>>::iterator it = find_if(f.begin(), f.end(), [&id](const shared_ptr<Funcionario> & obj) {return obj->getId() == id;});
+    if( it != f.end() ) {
+        f.erase(it);
         cout << "Funcionario removido com sucesso!" << endl;
     } else {
         cout << "Não existe funcionario com esse id cadastrado!" << endl;
     }
+    cin.ignore();
 }
 
 //Função para alterar dados de um funcionario
 void alterarFuncionario(vector<shared_ptr<Funcionario>> &f) {
     int id;        
-    bool existe = false;
+
     cout << "Digite o ID do funcionario: ";
     cin >> id;
-    for (unsigned i = 0; i < f.size(); i++) {
-        if( f[i]->getId() == id ) {
-            f[i]->atualizarDados();
-            existe = true;
-            break;
-        }
-    }
-    if( existe ) {
+
+    vector<shared_ptr<Funcionario>>::iterator it = find_if(f.begin(), f.end(), [&id](const shared_ptr<Funcionario> & obj) {return obj->getId() == id;});
+    if( it != f.end() ) {
+        f[std::distance(f.begin(), it)]->atualizarDados();
         cout << "Informacoes do funcionario atualizadas com sucesso!" << endl;
     } else {
         cout << "Não existe funcionario com esse id cadastrado!" << endl;
     }
+    cin.ignore();
 }
 
 //Menu de funcionarios
