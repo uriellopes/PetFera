@@ -1,3 +1,6 @@
+#ifndef Animal_H
+#define Animal_H
+
 #include <string>
 using std::string;
 
@@ -17,3 +20,5 @@ public:
 	Animal();
 	~Animal();
 };
+
+#endif

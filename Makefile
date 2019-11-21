@@ -27,6 +27,11 @@ MAN_FILES = $(FILE_OBJ)mamifero.o $(FILE_OBJ)mamiferonativo.o $(FILE_OBJ)mamifer
 REP_FILES = $(FILE_OBJ)reptil.o $(FILE_OBJ)reptilnativo.o $(FILE_OBJ)reptilexotico.o
 AVE_FILES = $(FILE_OBJ)ave.o $(FILE_OBJ)avenativa.o $(FILE_OBJ)aveexotica.o
 
+#flags de includes de cada animal e tratadores
+FUNC_INC = $(FILE_INC)tratador.h $(FILE_INC)veterinario.h
+ANIM_EXO_INC = $(FILE_INC)mamiferoexotico.h $(FILE_INC)reptilexotico.h $(FILE_INC)aveexotica.h $(FILE_INC)anfibioexotico.h
+ANIM_NAT_INC = $(FILE_INC)mamiferonativo.h $(FILE_INC)reptilnativo.h $(FILE_INC)avenativa.h $(FILE_INC)anfibionativo.h
+
 #.o para criar o executavel
 OBJS = $(FILE_OBJ)main.o $(FUNC_FILES) $(ANIM_FILES) $(ANF_FILES) $(MAN_FILES) $(REP_FILES) $(AVE_FILES)
 
@@ -38,7 +43,7 @@ create:
 $(PROJ): $(OBJS)
 	$(CC) $(FLAGS) -o $@ $(OBJS)
 
-$(FILE_OBJ)main.o: $(FILE_CPP)main.cpp $(FILE_INC)animal.h $(FILE_INC)tratador.h $(FILE_INC)veterinario.h
+$(FILE_OBJ)main.o: $(FILE_CPP)main.cpp $(FUNC_INC) $(ANIM_EXO_INC) $(ANIM_NAT_INC)
 	$(CC) $(FLAGS) $(OBJ_FLAG)
 
 $(FILE_OBJ)funcionario.o: $(FILE_CPP)funcionario.cpp $(FILE_INC)funcionario.h

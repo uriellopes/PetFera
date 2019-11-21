@@ -19,6 +19,15 @@ using std::ifstream;
 #include <vector>
 using std::vector;
 
+#include "../includes/anfibioexotico.h"
+#include "../includes/mamiferoexotico.h"
+#include "../includes/aveexotica.h"
+#include "../includes/reptilexotico.h"
+#include "../includes/anfibionativo.h"
+#include "../includes/mamiferonativo.h"
+#include "../includes/avenativa.h"
+#include "../includes/reptilnativo.h"
+
 #include "../includes/tratador.h"
 #include "../includes/veterinario.h"
 
