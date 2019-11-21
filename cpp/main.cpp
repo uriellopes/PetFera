@@ -433,6 +433,9 @@ int main() {
     animais.push_back(shared_ptr<Anfibio>(new Anfibio(2, "Mamifero", "Leão", "Lionius", 'M', 2, "Carnes", 1, 2, "Simba", 4, "Marrom")));
     animais.push_back(shared_ptr<Ave>(new Ave(3, "Mamifero", "Leão", "Lionius", 'M', 2, "Carnes", 1, 2, "Simba", 20, 30)));
     animais.push_back(shared_ptr<Reptil>(new Reptil(4, "Mamifero", "Leão", "Lionius", 'M', 2, "Carnes", 1, 2, "Simba", 1, "Marrom")));
+    animais.push_back(shared_ptr<MamiferoNativo>(new MamiferoNativo(5, "Mamifero", "Leão", "Lionius", 'M', 2, "Carnes", 1, 2, "Simba", "Marrom","Africa","SIM","SIM")));
+    animais.push_back(shared_ptr<MamiferoExotico>(new MamiferoExotico(6, "Mamifero", "Leão", "Lionius", 'M', 2, "Carnes", 1, 2, "Simba", "Marrom", "Brasil", "SIM")));
+    
 
 	salvarDados(funcionarios, animais);
 
