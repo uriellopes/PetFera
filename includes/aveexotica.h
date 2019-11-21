@@ -8,6 +8,7 @@ class AveExotica : public Ave, public AnimalExotico {
 public:
     AveExotica(int, string, string, string, char, double, string, int, int, string, double, double, string, string);
     ~AveExotica();
+    void print(std::ostream &o);
 };
 
 #endif
