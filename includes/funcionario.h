@@ -16,6 +16,8 @@ protected:
 public:
 	Funcionario();
 	~Funcionario();
+	friend std::ostream& operator<< (std::ostream &o, Funcionario &f);
+	virtual void print(std::ostream &o) = 0;
 };
 
 #endif

@@ -14,9 +14,8 @@ Veterinario::Veterinario(int a, string b, string c, int d, string e, char f, str
 
 Veterinario::~Veterinario() {}
 
-std::ostream& operator<< (std::ostream &o, Veterinario const v) {
-    o << 1 << ";" << v.id << ";" << v.nome << ";" << v.cpf << ";" 
-	<< v.idade << ";" << v.tipo_sanguineio << ";" << v.fator_rh << ";" 
-	<< v.especialidade << ";" << v.crmv;
-	return o;
+void Veterinario::print(std::ostream &o) {
+	o << 1 << ";" << id << ";" << nome << ";" << cpf << ";" 
+	<< idade << ";" << tipo_sanguineio << ";" << fator_rh << ";" 
+	<< especialidade << ";" << crmv;
 }

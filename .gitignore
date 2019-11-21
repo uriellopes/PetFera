@@ -2,4 +2,4 @@ exec
 teste.cpp
 obj/
 teste.csv
-.vscode/
+/.vscode/settings.json
