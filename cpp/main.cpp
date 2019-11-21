@@ -62,15 +62,15 @@ void pressToCont() {
 }
 
 //Função para ler os dados dos arquivos
-void lerDados(vector<shared_ptr<Funcionario>> &f) {
+void lerDados(vector<shared_ptr<Funcionario>> &f, vector<shared_ptr<Animal>> &a) {
     
-    ifstream file_animais("funcionarios.csv");
+    ifstream file_funcionarios("funcionarios.csv");
 
     vector<string> values;
     string line, value;
 
-    while(!file_animais.eof()) {
-        getline(file_animais, line);
+    while(!file_funcionarios.eof()) {
+        getline(file_funcionarios, line);
         if ( !line.empty() ) {
             stringstream temp(line);
             values.clear();
@@ -83,6 +83,59 @@ void lerDados(vector<shared_ptr<Funcionario>> &f) {
                 break;
             case 1:
                 f.push_back(shared_ptr<Veterinario>(new Veterinario(stoi(values[1]), values[2], values[3], stoi(values[4]), values[5], *values[6].c_str(), values[7], values[8])));
+                break;
+            }
+        }
+    }
+
+    file_funcionarios.close();
+
+    ifstream file_animais("animais.csv");
+
+    while(!file_animais.eof()) {
+        getline(file_animais, line);
+        if ( !line.empty() ) {
+            stringstream temp(line);
+            values.clear();
+            while(getline(temp, value, ';')) {
+                values.push_back(value);
+            }
+            switch (stoi(values[0])) {
+            case 0:
+                a.push_back(shared_ptr<Mamifero>(new Mamifero(stoi(values[1]), values[2], values[3], values[4], *values[5].c_str(), stoi(values[6]), values[7], stoi(values[8]), stoi(values[9]), values[10], values[11])));
+                break;
+            case 1:
+                a.push_back(shared_ptr<Anfibio>(new Anfibio(stoi(values[1]), values[2], values[3], values[4], *values[5].c_str(), stoi(values[6]), values[7], stoi(values[8]), stoi(values[9]), values[10], stoi(values[11]), values[12])));
+                break;
+            case 2:
+                a.push_back(shared_ptr<Ave>(new Ave(stoi(values[1]), values[2], values[3], values[4], *values[5].c_str(), stoi(values[6]), values[7], stoi(values[8]), stoi(values[9]), values[10], stoi(values[11]), stoi(values[12]))));
+                break;
+            case 3:
+                a.push_back(shared_ptr<Reptil>(new Reptil(stoi(values[1]), values[2], values[3], values[4], *values[5].c_str(), stoi(values[6]), values[7], stoi(values[8]), stoi(values[9]), values[10], stoi(values[11]), values[12])));
+                break;
+            case 4:
+                a.push_back(shared_ptr<MamiferoNativo>(new MamiferoNativo(stoi(values[1]), values[2], values[3], values[4], *values[5].c_str(), stoi(values[6]), values[7], stoi(values[8]), stoi(values[9]), values[10], values[11], values[12], values[13], values[14])));
+                break;
+            case 5:
+                a.push_back(shared_ptr<MamiferoExotico>(new MamiferoExotico(stoi(values[1]), values[2], values[3], values[4], *values[5].c_str(), stoi(values[6]), values[7], stoi(values[8]), stoi(values[9]), values[10], values[11], values[12], values[13])));
+                break;
+            case 6:
+                a.push_back(shared_ptr<AnfibioNativo>(new AnfibioNativo(stoi(values[1]), values[2], values[3], values[4], *values[5].c_str(), stoi(values[6]), values[7], stoi(values[8]), stoi(values[9]), values[10], stoi(values[11]), values[12], values[13], values[14], values[15])));
+                break;
+            case 7:
+                a.push_back(shared_ptr<AnfibioExotico>(new AnfibioExotico(stoi(values[1]), values[2], values[3], values[4], *values[5].c_str(), stoi(values[6]), values[7], stoi(values[8]), stoi(values[9]), values[10], stoi(values[11]), values[12], values[13], values[14])));
+                break;
+            case 8:
+                a.push_back(shared_ptr<AveNativa>(new AveNativa(stoi(values[1]), values[2], values[3], values[4], *values[5].c_str(), stoi(values[6]), values[7], stoi(values[8]), stoi(values[9]), values[10], stoi(values[11]), stoi(values[12]), values[13], values[14], values[15])));
+                break;
+            case 9:
+                a.push_back(shared_ptr<AveExotica>(new AveExotica(stoi(values[1]), values[2], values[3], values[4], *values[5].c_str(), stoi(values[6]), values[7], stoi(values[8]), stoi(values[9]), values[10], stoi(values[11]), stoi(values[12]), values[13], values[14])));
+                break;
+            case 10:
+                a.push_back(shared_ptr<ReptilNativo>(new ReptilNativo(stoi(values[1]), values[2], values[3], values[4], *values[5].c_str(), stoi(values[6]), values[7], stoi(values[8]), stoi(values[9]), values[10], stoi(values[11]), values[12], values[13], values[14], values[15])));
+                break;
+            case 11:
+                a.push_back(shared_ptr<ReptilExotico>(new ReptilExotico(stoi(values[1]), values[2], values[3], values[4], *values[5].c_str(), stoi(values[6]), values[7], stoi(values[8]), stoi(values[9]), values[10], stoi(values[11]), values[12], values[13], values[14])));
                 break;
             }
         }
@@ -425,22 +478,9 @@ int main() {
     vector<shared_ptr<Animal>> animais;
     vector<shared_ptr<Funcionario>> funcionarios;
 
-	lerDados(funcionarios);
+	lerDados(funcionarios, animais);
 
     menuPrincipal(funcionarios);
-
-    animais.push_back(shared_ptr<Mamifero>(new Mamifero(1, "Mamifero", "Leão", "Lionius", 'M', 2, "Carnes", 1, 2, "Simba", "Marrom")));
-    animais.push_back(shared_ptr<Anfibio>(new Anfibio(2, "Anfibio", "Leão", "Lionius", 'M', 2, "Carnes", 1, 2, "Simba", 4, "Marrom")));
-    animais.push_back(shared_ptr<Ave>(new Ave(3, "Ave", "Leão", "Lionius", 'M', 2, "Carnes", 1, 2, "Simba", 20, 30)));
-    animais.push_back(shared_ptr<Reptil>(new Reptil(4, "Reptil", "Leão", "Lionius", 'M', 2, "Carnes", 1, 2, "Simba", 1, "Marrom")));
-    animais.push_back(shared_ptr<MamiferoNativo>(new MamiferoNativo(5, "Mamifero", "Leão", "Lionius", 'M', 2, "Carnes", 1, 2, "Simba", "Marrom","Africa","SIM","SIM")));
-    animais.push_back(shared_ptr<MamiferoExotico>(new MamiferoExotico(6, "Mamifero", "Leão", "Lionius", 'M', 2, "Carnes", 1, 2, "Simba", "Marrom", "Brasil", "SIM")));
-    animais.push_back(shared_ptr<AnfibioNativo>(new AnfibioNativo(7, "Anfibio", "Leão", "Lionius", 'M', 2, "Carnes", 1, 2, "Simba", 4, "Marrom","RN","SIM", "SIM")));
-    animais.push_back(shared_ptr<AnfibioExotico>(new AnfibioExotico(8, "Anfibio", "Leão", "Lionius", 'M', 2, "Carnes", 1, 2, "Simba", 4, "Marrom","Australia","SIM")));
-    animais.push_back(shared_ptr<AveNativa>(new AveNativa(9, "Ave", "Leão", "Lionius", 'M', 2, "Carnes", 1, 2, "Simba", 20, 30,"PB","SIM","SIM")));
-    animais.push_back(shared_ptr<AveExotica>(new AveExotica(10, "Ave", "Leão", "Lionius", 'M', 2, "Carnes", 1, 2, "Simba", 20, 30,"AM","SIM")));
-    animais.push_back(shared_ptr<ReptilNativo>(new ReptilNativo(11, "Reptil", "Leão", "Lionius", 'M', 2, "Carnes", 1, 2, "Simba", 1, "Marrom","RN","SIM","SIM")));
-    animais.push_back(shared_ptr<ReptilExotico>(new ReptilExotico(12, "Reptil", "Leão", "Lionius", 'M', 2, "Carnes", 1, 2, "Simba", 1, "Marrom","Russia","SIM")));
 
 	salvarDados(funcionarios, animais);
 
