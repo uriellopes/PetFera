@@ -12,3 +12,9 @@ std::ostream& operator<< (std::ostream &o, Funcionario &f) {
 int Funcionario::getId() {
     return id;
 }
+
+void Funcionario::mostrarFuncionarios(int f) {
+    if( funcao == f ) {
+        mostrarDados();
+    }
+}

@@ -3,8 +3,10 @@
 #include <iostream>
 using std::cout;
 using std::cin;
+using std::endl;
 
 Veterinario::Veterinario(int a, string b, string c, int d, string e, char f, string g, string h) {
+    funcao = 1;
 	id = a;
 	nome = b;
 	cpf = c;
@@ -42,4 +44,15 @@ void Veterinario::atualizarDados() {
     getline(cin, especialidade);
     cout << "CRMV: ";
     getline(cin, crmv);
+}
+
+void Veterinario::mostrarDados() {
+    cout << "Funcao: Veterinario" << endl;
+    cout << "ID: " << id << endl;
+    cout << "Nome: " << nome << endl;
+    cout << "CPF: " << cpf << endl;
+    cout << "Idade: " << idade << endl;
+    cout << "Tipo Sanguineo: " << tipo_sanguineo << fator_rh << endl;
+    cout << "Especialidade: " << especialidade << endl;
+    cout << "CRMV: " << crmv << endl << endl;
 }
