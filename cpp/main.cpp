@@ -785,6 +785,113 @@ void cadastrarAve(vector<shared_ptr<Animal>> &a) {
     } while (!sair);
 }
 
+//Função para cadastrar reptil domestico
+void cadastrarReptilDomestico(vector<shared_ptr<Animal>> &a) {
+    int id, tratador, veterinario;
+    string nome, nome_cientifico, dieta, batismo, tipo_veneno;
+    char sexo;
+    double tamanho;
+    bool venenoso;
+
+    cout << "Digite as informaçoes do novo animal: " << endl;
+    cout << "ID: ";
+    cin >> id;
+
+    vector<shared_ptr<Animal>>::iterator it = find_if(a.begin(), a.end(), [&id](const shared_ptr<Animal> & obj) {return obj->getId() == id;});
+    if( it != a.end() ) {
+        cout << endl << "Já existe um animal cadastrado com esse ID" << endl << endl;
+        cin.ignore();
+    } else {
+        cout << "Nome: ";
+        cin.ignore();
+        getline(cin, nome);
+        cout << "Nome Cientifico: ";
+        getline(cin, nome_cientifico);
+        cout << "Sexo: ";
+        cin >> sexo;
+        cout << "Tamanho: ";
+        cin >> tamanho;
+        cout << "Dieta: ";
+        cin.ignore();
+        getline(cin, dieta);
+        cout << "ID do tratador ( Digite 0 caso nao tenha tratador): ";
+        cin >> tratador;
+        cout << "ID do veterinario ( Digite 0 caso nao tenha veterinario ): ";
+        cin >> veterinario;
+        cout << "Nome de batismo: ";
+        cin.ignore();
+        getline(cin, batismo);
+        cout << "Venenoso ([1] - Sim / [0] - Nao): ";
+        cin >> venenoso;
+        cout << "Tipo do veneno: ";
+        cin.ignore();
+        getline(cin, tipo_veneno);
+
+        a.push_back(shared_ptr<Reptil>(new Reptil(id, "Reptilia", nome, nome_cientifico, sexo, tamanho, dieta, tratador, veterinario, batismo, venenoso, tipo_veneno)));
+
+        cout << endl << "Novo animal cadastrado com sucesso!" << endl << endl;
+    }
+}
+
+//Função com menu para escolher se o reptil é domestico, nativo ou exotico
+void cadastrarReptil(vector<shared_ptr<Animal>> &a) {
+    string input;
+    int escolha;
+    bool sair = false, error = false;
+
+    //Loop para verificar se o input é uma opção válida e caso seja, realizer a operação referente a escolha
+    do {
+        clear();
+        cout << endl << "###################################################" << endl;
+        cout << "###                 NOVO REPTIL                 ###" << endl;
+        cout << "###################################################" << endl;
+        cout << endl << "Escolha o tipo do novo mamifero: " << endl << endl;
+        cout << "[1] - Domestico" << endl;
+        cout << "[2] - Nativo" << endl;
+        cout << "[3] - Exotico" << endl;
+        cout << endl;
+        cout << "[0] - Sair" << endl << endl;
+
+        if (error) {
+            error = false;
+            cout << "**Digite uma opcao valida!**" << endl;
+        }
+        cout << "Opcao: ";
+        cin >> input;
+
+        if (checarDigito(input)) {
+            escolha = stoi(input, nullptr);
+
+            if (escolha >= 0 && escolha <= 3) {
+                switch (escolha) {
+                case 0:
+                    sair = true;
+                    break;
+                case 1:
+                    clear();
+                    cadastrarReptilDomestico(a);
+                    pressToCont();
+                    break;
+                case 2:
+                    clear();
+                    //cadastrarMamiferoNativo(a);
+                    pressToCont();
+                    break;
+                case 3:
+                    clear();
+                    //cadastrarMamiferoExotico(a);
+                    pressToCont();
+                    break;
+                }
+            } else {
+                error = true;
+            }
+        } else {
+            error = true;
+        }
+    } while (!sair);
+}
+
 //Função para cadastrar um novo animal
 void cadastrarAnimal(vector<shared_ptr<Animal>> &a) {
     string input;
@@ -836,7 +943,9 @@ void cadastrarAnimal(vector<shared_ptr<Animal>> &a) {
                     pressToCont();
                     break;
                 case 4:
-                    //
+                    clear();
+                    cadastrarReptil(a);
+                    pressToCont();
                     break;
                 }
             } else {
