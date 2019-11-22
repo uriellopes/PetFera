@@ -833,6 +833,112 @@ void cadastrarReptilDomestico(vector<shared_ptr<Animal>> &a) {
     }
 }
 
+//Função para cadastrar reptil nativo
+void cadastrarReptilNativo(vector<shared_ptr<Animal>> &a) {
+    int id, tratador, veterinario;
+    string nome, nome_cientifico, dieta, batismo, tipo_veneno, uf_origem, autorizacao, autorizacao_ibama;
+    char sexo;
+    double tamanho;
+    bool venenoso;
+
+    cout << "Digite as informaçoes do novo animal: " << endl;
+    cout << "ID: ";
+    cin >> id;
+
+    vector<shared_ptr<Animal>>::iterator it = find_if(a.begin(), a.end(), [&id](const shared_ptr<Animal> & obj) {return obj->getId() == id;});
+    if( it != a.end() ) {
+        cout << endl << "Já existe um animal cadastrado com esse ID" << endl << endl;
+        cin.ignore();
+    } else {
+        cout << "Nome: ";
+        cin.ignore();
+        getline(cin, nome);
+        cout << "Nome Cientifico: ";
+        getline(cin, nome_cientifico);
+        cout << "Sexo: ";
+        cin >> sexo;
+        cout << "Tamanho: ";
+        cin >> tamanho;
+        cout << "Dieta: ";
+        cin.ignore();
+        getline(cin, dieta);
+        cout << "ID do tratador ( Digite 0 caso nao tenha tratador): ";
+        cin >> tratador;
+        cout << "ID do veterinario ( Digite 0 caso nao tenha veterinario ): ";
+        cin >> veterinario;
+        cout << "Nome de batismo: ";
+        cin.ignore();
+        getline(cin, batismo);
+        cout << "Venenoso ([1] - Sim / [0] - Nao): ";
+        cin >> venenoso;
+        cout << "Tipo do veneno: ";
+        cin.ignore();
+        getline(cin, tipo_veneno);
+        cout << "UF da origem: ";
+        getline(cin, uf_origem);
+        cout << "Autorizacao: ";
+        getline(cin, autorizacao);
+        cout << "Autorizacao do Ibama: ";
+        getline(cin, autorizacao_ibama);
+
+        a.push_back(shared_ptr<ReptilNativo>(new ReptilNativo(id, "Reptilia", nome, nome_cientifico, sexo, tamanho, dieta, tratador, veterinario, batismo, venenoso, tipo_veneno, uf_origem, autorizacao, autorizacao_ibama)));
+
+        cout << endl << "Novo animal cadastrado com sucesso!" << endl << endl;
+    }
+}
+
+//Função para cadastrar reptil exotico
+void cadastrarReptilExotico(vector<shared_ptr<Animal>> &a) {
+    int id, tratador, veterinario;
+    string nome, nome_cientifico, dieta, batismo, tipo_veneno, pais_origem, autorizacao_ibama;
+    char sexo;
+    double tamanho;
+    bool venenoso;
+
+    cout << "Digite as informaçoes do novo animal: " << endl;
+    cout << "ID: ";
+    cin >> id;
+
+    vector<shared_ptr<Animal>>::iterator it = find_if(a.begin(), a.end(), [&id](const shared_ptr<Animal> & obj) {return obj->getId() == id;});
+    if( it != a.end() ) {
+        cout << endl << "Já existe um animal cadastrado com esse ID" << endl << endl;
+        cin.ignore();
+    } else {
+        cout << "Nome: ";
+        cin.ignore();
+        getline(cin, nome);
+        cout << "Nome Cientifico: ";
+        getline(cin, nome_cientifico);
+        cout << "Sexo: ";
+        cin >> sexo;
+        cout << "Tamanho: ";
+        cin >> tamanho;
+        cout << "Dieta: ";
+        cin.ignore();
+        getline(cin, dieta);
+        cout << "ID do tratador ( Digite 0 caso nao tenha tratador): ";
+        cin >> tratador;
+        cout << "ID do veterinario ( Digite 0 caso nao tenha veterinario ): ";
+        cin >> veterinario;
+        cout << "Nome de batismo: ";
+        cin.ignore();
+        getline(cin, batismo);
+        cout << "Venenoso ([1] - Sim / [0] - Nao): ";
+        cin >> venenoso;
+        cout << "Tipo do veneno: ";
+        cin.ignore();
+        getline(cin, tipo_veneno);
+        cout << "Pais de origem: ";
+        getline(cin, pais_origem);
+        cout << "Autorizacao do Ibama: ";
+        getline(cin, autorizacao_ibama);
+
+        a.push_back(shared_ptr<ReptilExotico>(new ReptilExotico(id, "Reptilia", nome, nome_cientifico, sexo, tamanho, dieta, tratador, veterinario, batismo, venenoso, tipo_veneno, pais_origem, autorizacao_ibama)));
+
+        cout << endl << "Novo animal cadastrado com sucesso!" << endl << endl;
+    }
+}
+
 //Função com menu para escolher se o reptil é domestico, nativo ou exotico
 void cadastrarReptil(vector<shared_ptr<Animal>> &a) {
     string input;
@@ -874,12 +980,12 @@ void cadastrarReptil(vector<shared_ptr<Animal>> &a) {
                     break;
                 case 2:
                     clear();
-                    //cadastrarMamiferoNativo(a);
+                    cadastrarReptilNativo(a);
                     pressToCont();
                     break;
                 case 3:
                     clear();
-                    //cadastrarMamiferoExotico(a);
+                    cadastrarReptilExotico(a);
                     pressToCont();
                     break;
                 }
