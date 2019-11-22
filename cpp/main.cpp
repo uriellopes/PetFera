@@ -575,6 +575,165 @@ void cadastrarAnfibio(vector<shared_ptr<Animal>> &a) {
     } while (!sair); 
 }
 
+//Função para cadastrar ave domestica
+void cadastrarAveDomestica(vector<shared_ptr<Animal>> &a) {
+    int id, tratador, veterinario;
+    string nome, nome_cientifico, dieta, batismo;
+    char sexo;
+    double tamanho, tamanho_do_bico_cm, envergadura_das_asas;
+
+    cout << "Digite as informaçoes do novo animal: " << endl;
+    cout << "ID: ";
+    cin >> id;
+
+    vector<shared_ptr<Animal>>::iterator it = find_if(a.begin(), a.end(), [&id](const shared_ptr<Animal> & obj) {return obj->getId() == id;});
+    if( it != a.end() ) {
+        cout << endl << "Já existe um animal cadastrado com esse ID" << endl << endl;
+        cin.ignore();
+    } else {
+        cout << "Nome: ";
+        cin.ignore();
+        getline(cin, nome);
+        cout << "Nome Cientifico: ";
+        getline(cin, nome_cientifico);
+        cout << "Sexo: ";
+        cin >> sexo;
+        cout << "Tamanho: ";
+        cin >> tamanho;
+        cout << "Dieta: ";
+        cin.ignore();
+        getline(cin, dieta);
+        cout << "ID do tratador ( Digite 0 caso nao tenha tratador): ";
+        cin >> tratador;
+        cout << "ID do veterinario ( Digite 0 caso nao tenha veterinario ): ";
+        cin >> veterinario;
+        cout << "Nome de batismo: ";
+        cin.ignore();
+        getline(cin, batismo);
+        cout << "Tamanho do bico: ";
+        cin >> tamanho_do_bico_cm;
+        cout << "Envergadura das asas: ";
+        cin >> envergadura_das_asas;
+        cin.ignore();
+
+        a.push_back(shared_ptr<Ave>(new Ave(id, "Aves", nome, nome_cientifico, sexo, tamanho, dieta, tratador, veterinario, batismo, tamanho_do_bico_cm, envergadura_das_asas)));
+
+        cout << endl << "Novo animal cadastrado com sucesso!" << endl << endl;
+    }
+}
+
+//Função para cadastrar ave nativa
+void cadastrarAveNativa(vector<shared_ptr<Animal>> &a) {
+    int id, tratador, veterinario;
+    string nome, nome_cientifico, dieta, batismo, uf_origem, autorizacao, autorizacao_ibama;
+    char sexo;
+    double tamanho, tamanho_do_bico_cm, envergadura_das_asas;
+
+    cout << "Digite as informaçoes do novo animal: " << endl;
+    cout << "ID: ";
+    cin >> id;
+
+    vector<shared_ptr<Animal>>::iterator it = find_if(a.begin(), a.end(), [&id](const shared_ptr<Animal> & obj) {return obj->getId() == id;});
+    if( it != a.end() ) {
+        cout << endl << "Já existe um animal cadastrado com esse ID" << endl << endl;
+        cin.ignore();
+    } else {
+        cout << "Nome: ";
+        cin.ignore();
+        getline(cin, nome);
+        cout << "Nome Cientifico: ";
+        getline(cin, nome_cientifico);
+        cout << "Sexo: ";
+        cin >> sexo;
+        cout << "Tamanho: ";
+        cin >> tamanho;
+        cout << "Dieta: ";
+        cin.ignore();
+        getline(cin, dieta);
+        cout << "ID do tratador ( Digite 0 caso nao tenha tratador): ";
+        cin >> tratador;
+        cout << "ID do veterinario ( Digite 0 caso nao tenha veterinario ): ";
+        cin >> veterinario;
+        cout << "Nome de batismo: ";
+        cin.ignore();
+        getline(cin, batismo);
+        cout << "Tamanho do bico: ";
+        cin >> tamanho_do_bico_cm;
+        cout << "Envergadura das asas: ";
+        cin >> envergadura_das_asas;
+        cout << "UF da origem: ";
+        cin.ignore();
+        getline(cin, uf_origem);
+        cout << "Autorizacao: ";
+        getline(cin, autorizacao);
+        cout << "Autorizacao do Ibama: ";
+        getline(cin, autorizacao_ibama);
+
+        a.push_back(shared_ptr<AveNativa>(new AveNativa(id, "Aves", nome, nome_cientifico, sexo, tamanho, dieta, tratador, veterinario, batismo, tamanho_do_bico_cm, envergadura_das_asas, uf_origem, autorizacao, autorizacao_ibama)));
+
+        cout << endl << "Novo animal cadastrado com sucesso!" << endl << endl;
+    }
+}
+
+//Função com menu para escolher se a ave é domestica, nativa ou exotica
+void cadastrarAve(vector<shared_ptr<Animal>> &a) {
+    string input;
+    int escolha;
+    bool sair = false, error = false;
+
+    //Loop para verificar se o input é uma opção válida e caso seja, realizer a operação referente a escolha
+    do {
+        clear();
+        cout << endl << "###################################################" << endl;
+        cout << "###                 NOVA AVE                    ###" << endl;
+        cout << "###################################################" << endl;
+        cout << endl << "Escolha o tipo do novo mamifero: " << endl << endl;
+        cout << "[1] - Domestica" << endl;
+        cout << "[2] - Nativa" << endl;
+        cout << "[3] - Exotica" << endl;
+        cout << endl;
+        cout << "[0] - Sair" << endl << endl;
+
+        if (error) {
+            error = false;
+            cout << "**Digite uma opcao valida!**" << endl;
+        }
+        cout << "Opcao: ";
+        cin >> input;
+
+        if (checarDigito(input)) {
+            escolha = stoi(input, nullptr);
+
+            if (escolha >= 0 && escolha <= 3) {
+                switch (escolha) {
+                case 0:
+                    sair = true;
+                    break;
+                case 1:
+                    clear();
+                    cadastrarAveDomestica(a);
+                    pressToCont();
+                    break;
+                case 2:
+                    clear();
+                    cadastrarAveNativa(a);
+                    pressToCont();
+                    break;
+                case 3:
+                    clear();
+                    //cadastrarMamiferoExotico(a);
+                    pressToCont();
+                    break;
+                }
+            } else {
+                error = true;
+            }
+        } else {
+            error = true;
+        }
+    } while (!sair);
+}
+
 //Função para cadastrar um novo animal
 void cadastrarAnimal(vector<shared_ptr<Animal>> &a) {
     string input;
@@ -621,7 +780,9 @@ void cadastrarAnimal(vector<shared_ptr<Animal>> &a) {
                     pressToCont();
                     break;
                 case 3:
-                    //
+                    clear();
+                    cadastrarAve(a);
+                    pressToCont();
                     break;
                 case 4:
                     //
