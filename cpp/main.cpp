@@ -258,6 +258,55 @@ void cadastrarMamiferoNativo(vector<shared_ptr<Animal>> &a) {
     }
 }
 
+//Função para cadastrar um mamifero silvestre exotico
+void cadastrarMamiferoExotico(vector<shared_ptr<Animal>> &a) {
+    int id, tratador, veterinario;
+	string nome, nome_cientifico, dieta, batismo, cor_do_pelo, pais_origem, autorizacao_ibama;
+	char sexo;
+	double tamanho;
+
+    cout << "Digite as informaçoes do novo animal: " << endl;
+    cout << "ID: ";
+    cin >> id;
+
+    vector<shared_ptr<Animal>>::iterator it = find_if(a.begin(), a.end(), [&id](const shared_ptr<Animal> & obj) {return obj->getId() == id;});
+    if( it != a.end() ) {
+        cout << endl << "Já existe um animal cadastrado com esse ID" << endl << endl;
+        cin.ignore();
+    } else {
+        cout << "Nome: ";
+        cin.ignore();
+        getline(cin, nome);
+        cout << "Nome Cientifico: ";
+        getline(cin, nome_cientifico);
+        cout << "Sexo: ";
+        cin >> sexo;
+        cout << "Tamanho: ";
+        cin >> tamanho;
+        cout << "Dieta: ";
+        cin.ignore();
+        getline(cin, dieta);
+        cout << "ID do tratador ( Digite 0 caso nao tenha tratador): ";
+        cin >> tratador;
+        cout << "ID do veterinario ( Digite 0 caso nao tenha veterinario ): ";
+        cin >> veterinario;
+        cout << "Nome de batismo: ";
+        cin.ignore();
+        getline(cin, batismo);
+        cout << "Cor do pelo: ";
+        getline(cin, cor_do_pelo);
+        cout << "Pais de origem: ";
+        getline(cin, pais_origem);
+        cout << "Autorizacao do Ibama: ";
+        getline(cin, autorizacao_ibama);
+
+        a.push_back(shared_ptr<MamiferoExotico>(new MamiferoExotico(id, "Mammalia", nome, nome_cientifico, sexo, tamanho, dieta, tratador, veterinario, batismo, cor_do_pelo, pais_origem, autorizacao_ibama)));
+
+        cout << endl << "Novo animal cadastrado com sucesso!" << endl << endl;
+    }
+}
+
+//Função com menu para escolher se o mamifero é domestico, nativo ou exotico
 void casdastrarMamifero(vector<shared_ptr<Animal>> &a) {
     string input;
     int escolha;
@@ -302,7 +351,9 @@ void casdastrarMamifero(vector<shared_ptr<Animal>> &a) {
                     pressToCont();
                     break;
                 case 3:
-                    //
+                    clear();
+                    cadastrarMamiferoExotico(a);
+                    pressToCont();
                     break;
                 }
             } else {
@@ -314,6 +365,7 @@ void casdastrarMamifero(vector<shared_ptr<Animal>> &a) {
     } while (!sair);
 }
 
+//Função para cadastrar um novo animal
 void cadastrarAnimal(vector<shared_ptr<Animal>> &a) {
     string input;
     int escolha;
