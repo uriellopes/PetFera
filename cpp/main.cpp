@@ -155,13 +155,167 @@ void salvarDados(vector<shared_ptr<Funcionario>> &f, vector<shared_ptr<Animal>> 
 
     file_funcionarios.close();
 
-    ofstream file_animais("animais.csv");
+    ofstream file_animais("teste.csv");
 
     for (unsigned i = 0; i < a.size(); i++) {
         file_animais << *a[i] << endl;
     }
 
     file_animais.close();
+}
+
+void cadastrarMamiferoDomestico(vector<shared_ptr<Animal>> &a) {
+    int id, tratador, veterinario;
+	string nome, nome_cientifico, dieta, batismo, cor_do_pelo;
+	char sexo;
+	double tamanho;
+
+    cout << "Digite as informaçoes do novo animal: " << endl;
+    cout << "ID: ";
+    cin >> id;
+
+    vector<shared_ptr<Animal>>::iterator it = find_if(a.begin(), a.end(), [&id](const shared_ptr<Animal> & obj) {return obj->getId() == id;});
+    if( it != a.end() ) {
+        cout << endl << "Já existe um animal cadastrado com esse ID" << endl << endl;
+    } else {
+        cout << "Nome: ";
+        cin.ignore();
+        getline(cin, nome);
+        cout << "Nome Cientifico: ";
+        getline(cin, nome_cientifico);
+        cout << "Sexo: ";
+        cin >> sexo;
+        cout << "Tamanho: ";
+        cin >> tamanho;
+        cout << "Dieta: ";
+        cin.ignore();
+        getline(cin, dieta);
+        cout << "ID do tratador ( Digite 0 caso nao tenha tratador): ";
+        cin >> tratador;
+        cout << "ID do veterinario ( Digite 0 caso nao tenha veterinario ): ";
+        cin >> veterinario;
+        cout << "Nome de batismo: ";
+        cin.ignore();
+        getline(cin, batismo);
+        cout << "Cor do pelo: ";
+        getline(cin, cor_do_pelo);
+
+        a.push_back(shared_ptr<Mamifero>(new Mamifero(id, "Mammalia", nome, nome_cientifico, sexo, tamanho, dieta, tratador, veterinario, batismo, cor_do_pelo)));
+
+        cout << endl << "Novo animal cadastrado com sucesso!" << endl << endl;
+    }
+}
+
+void casdastrarMamifero(vector<shared_ptr<Animal>> &a) {
+    string input;
+    int escolha;
+    bool sair = false, error = false;
+
+    //Loop para verificar se o input é uma opção válida e caso seja, realizer a operação referente a escolha
+    do {
+        clear();
+        cout << endl << "########################################################" << endl;
+        cout << "###                 NOVO MAMIFERO                    ###" << endl;
+        cout << "########################################################" << endl;
+        cout << endl << "Escolha o tipo do novo mamifero: " << endl << endl;
+        cout << "[1] - Domestico" << endl;
+        cout << "[2] - Nativo" << endl;
+        cout << "[3] - Exotico" << endl;
+        cout << endl;
+        cout << "[0] - Sair" << endl << endl;
+
+        if (error) {
+            error = false;
+            cout << "**Digite uma opcao valida!**" << endl;
+        }
+        cout << "Opcao: ";
+        cin >> input;
+
+        if (checarDigito(input)) {
+            escolha = stoi(input, nullptr);
+
+            if (escolha >= 0 && escolha <= 3) {
+                switch (escolha) {
+                case 0:
+                    sair = true;
+                    break;
+                case 1:
+                    clear();
+                    cadastrarMamiferoDomestico(a);
+                    pressToCont();
+                    break;
+                case 2:
+                    //
+                    break;
+                case 3:
+                    //
+                    break;
+                }
+            } else {
+                error = true;
+            }
+        } else {
+            error = true;
+        }
+    } while (!sair);
+}
+
+void cadastrarAnimal(vector<shared_ptr<Animal>> &a) {
+    string input;
+    int escolha;
+    bool sair = false, error = false;
+
+    //Loop para verificar se o input é uma opção válida e caso seja, realizer a operação referente a escolha
+    do {
+        clear();
+        cout << endl << "########################################################" << endl;
+        cout << "###                 NOVO ANIMAL                      ###" << endl;
+        cout << "########################################################" << endl;
+        cout << endl << "Escolha a classe do novo animal: " << endl << endl;
+        cout << "[1] - Adicionar novo animal mamifero" << endl;
+        cout << "[2] - Adicionar novo animal anfibio" << endl;
+        cout << "[3] - Adicionar novo animal ave" << endl;
+        cout << "[4] - Adicionar novo animal reptil" << endl;
+        cout << endl;
+        cout << "[0] - Sair" << endl << endl;
+
+        if (error) {
+            error = false;
+            cout << "**Digite uma opcao valida!**" << endl;
+        }
+        cout << "Opcao: ";
+        cin >> input;
+
+        if (checarDigito(input)) {
+            escolha = stoi(input);
+
+            if (escolha >= 0 && escolha <= 4) {
+                switch (escolha) {
+                case 0:
+                    sair = true;
+                    break;
+                case 1:
+                    clear();
+                    casdastrarMamifero(a);
+                    pressToCont();
+                    break;
+                case 2:
+                    //
+                    break;
+                case 3:
+                    //
+                    break;
+                case 4:
+                    //
+                    break;
+                }
+            } else {
+                error = true;
+            }
+        } else {
+            error = true;
+        }
+    } while (!sair);
 }
 
 //Menu de animais
@@ -201,7 +355,9 @@ void menuAnimal(vector<shared_ptr<Animal>> &a) {
                     sair = true;
                     break;
                 case 1:
-                    //
+                    clear();
+                    cadastrarAnimal(a);
+                    pressToCont();
                     break;
                 case 2:
                     //

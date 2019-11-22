@@ -22,6 +22,7 @@ public:
 	~Animal();
 	friend std::ostream& operator<< (std::ostream &o, Animal &a);
 	virtual void print(std::ostream &o) = 0;
+	int getId();
 };
 
 #endif
