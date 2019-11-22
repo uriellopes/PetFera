@@ -675,6 +675,57 @@ void cadastrarAveNativa(vector<shared_ptr<Animal>> &a) {
     }
 }
 
+//Função para cadastrar ave exotica
+void cadastrarAveExotica(vector<shared_ptr<Animal>> &a) {
+    int id, tratador, veterinario;
+    string nome, nome_cientifico, dieta, batismo, pais_origem, autorizacao_ibama;
+    char sexo;
+    double tamanho, tamanho_do_bico_cm, envergadura_das_asas;
+
+    cout << "Digite as informaçoes do novo animal: " << endl;
+    cout << "ID: ";
+    cin >> id;
+
+    vector<shared_ptr<Animal>>::iterator it = find_if(a.begin(), a.end(), [&id](const shared_ptr<Animal> & obj) {return obj->getId() == id;});
+    if( it != a.end() ) {
+        cout << endl << "Já existe um animal cadastrado com esse ID" << endl << endl;
+        cin.ignore();
+    } else {
+        cout << "Nome: ";
+        cin.ignore();
+        getline(cin, nome);
+        cout << "Nome Cientifico: ";
+        getline(cin, nome_cientifico);
+        cout << "Sexo: ";
+        cin >> sexo;
+        cout << "Tamanho: ";
+        cin >> tamanho;
+        cout << "Dieta: ";
+        cin.ignore();
+        getline(cin, dieta);
+        cout << "ID do tratador ( Digite 0 caso nao tenha tratador): ";
+        cin >> tratador;
+        cout << "ID do veterinario ( Digite 0 caso nao tenha veterinario ): ";
+        cin >> veterinario;
+        cout << "Nome de batismo: ";
+        cin.ignore();
+        getline(cin, batismo);
+        cout << "Tamanho do bico: ";
+        cin >> tamanho_do_bico_cm;
+        cout << "Envergadura das asas: ";
+        cin >> envergadura_das_asas;
+        cout << "Pais de origem: ";
+        cin.ignore();
+        getline(cin, pais_origem);
+        cout << "Autorizacao do Ibama: ";
+        getline(cin, autorizacao_ibama);
+
+        a.push_back(shared_ptr<AveExotica>(new AveExotica(id, "Aves", nome, nome_cientifico, sexo, tamanho, dieta, tratador, veterinario, batismo, tamanho_do_bico_cm, envergadura_das_asas, pais_origem, autorizacao_ibama)));
+
+        cout << endl << "Novo animal cadastrado com sucesso!" << endl << endl;
+    }
+}
+
 //Função com menu para escolher se a ave é domestica, nativa ou exotica
 void cadastrarAve(vector<shared_ptr<Animal>> &a) {
     string input;
@@ -721,7 +772,7 @@ void cadastrarAve(vector<shared_ptr<Animal>> &a) {
                     break;
                 case 3:
                     clear();
-                    //cadastrarMamiferoExotico(a);
+                    cadastrarAveExotica(a);
                     pressToCont();
                     break;
                 }
