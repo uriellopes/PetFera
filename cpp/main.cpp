@@ -102,40 +102,40 @@ void lerDados(vector<shared_ptr<Funcionario>> &f, vector<shared_ptr<Animal>> &a)
             }
             switch (stoi(values[0])) {
             case 0:
-                a.push_back(shared_ptr<Mamifero>(new Mamifero(stoi(values[1]), values[2], values[3], values[4], *values[5].c_str(), stoi(values[6]), values[7], stoi(values[8]), stoi(values[9]), values[10], values[11])));
+                a.push_back(shared_ptr<Mamifero>(new Mamifero(stoi(values[1]), values[2], values[3], values[4], *values[5].c_str(), stod(values[6]), values[7], stoi(values[8]), stoi(values[9]), values[10], values[11])));
                 break;
             case 1:
-                a.push_back(shared_ptr<Anfibio>(new Anfibio(stoi(values[1]), values[2], values[3], values[4], *values[5].c_str(), stoi(values[6]), values[7], stoi(values[8]), stoi(values[9]), values[10], stoi(values[11]), values[12])));
+                a.push_back(shared_ptr<Anfibio>(new Anfibio(stoi(values[1]), values[2], values[3], values[4], *values[5].c_str(), stod(values[6]), values[7], stoi(values[8]), stoi(values[9]), values[10], stoi(values[11]), values[12])));
                 break;
             case 2:
-                a.push_back(shared_ptr<Ave>(new Ave(stoi(values[1]), values[2], values[3], values[4], *values[5].c_str(), stoi(values[6]), values[7], stoi(values[8]), stoi(values[9]), values[10], stoi(values[11]), stoi(values[12]))));
+                a.push_back(shared_ptr<Ave>(new Ave(stoi(values[1]), values[2], values[3], values[4], *values[5].c_str(), stod(values[6]), values[7], stoi(values[8]), stoi(values[9]), values[10], stoi(values[11]), stoi(values[12]))));
                 break;
             case 3:
-                a.push_back(shared_ptr<Reptil>(new Reptil(stoi(values[1]), values[2], values[3], values[4], *values[5].c_str(), stoi(values[6]), values[7], stoi(values[8]), stoi(values[9]), values[10], stoi(values[11]), values[12])));
+                a.push_back(shared_ptr<Reptil>(new Reptil(stoi(values[1]), values[2], values[3], values[4], *values[5].c_str(), stod(values[6]), values[7], stoi(values[8]), stoi(values[9]), values[10], stoi(values[11]), values[12])));
                 break;
             case 4:
-                a.push_back(shared_ptr<MamiferoNativo>(new MamiferoNativo(stoi(values[1]), values[2], values[3], values[4], *values[5].c_str(), stoi(values[6]), values[7], stoi(values[8]), stoi(values[9]), values[10], values[11], values[12], values[13], values[14])));
+                a.push_back(shared_ptr<MamiferoNativo>(new MamiferoNativo(stoi(values[1]), values[2], values[3], values[4], *values[5].c_str(), stod(values[6]), values[7], stoi(values[8]), stoi(values[9]), values[10], values[11], values[12], values[13], values[14])));
                 break;
             case 5:
-                a.push_back(shared_ptr<MamiferoExotico>(new MamiferoExotico(stoi(values[1]), values[2], values[3], values[4], *values[5].c_str(), stoi(values[6]), values[7], stoi(values[8]), stoi(values[9]), values[10], values[11], values[12], values[13])));
+                a.push_back(shared_ptr<MamiferoExotico>(new MamiferoExotico(stoi(values[1]), values[2], values[3], values[4], *values[5].c_str(), stod(values[6]), values[7], stoi(values[8]), stoi(values[9]), values[10], values[11], values[12], values[13])));
                 break;
             case 6:
-                a.push_back(shared_ptr<AnfibioNativo>(new AnfibioNativo(stoi(values[1]), values[2], values[3], values[4], *values[5].c_str(), stoi(values[6]), values[7], stoi(values[8]), stoi(values[9]), values[10], stoi(values[11]), values[12], values[13], values[14], values[15])));
+                a.push_back(shared_ptr<AnfibioNativo>(new AnfibioNativo(stoi(values[1]), values[2], values[3], values[4], *values[5].c_str(), stod(values[6]), values[7], stoi(values[8]), stoi(values[9]), values[10], stoi(values[11]), values[12], values[13], values[14], values[15])));
                 break;
             case 7:
-                a.push_back(shared_ptr<AnfibioExotico>(new AnfibioExotico(stoi(values[1]), values[2], values[3], values[4], *values[5].c_str(), stoi(values[6]), values[7], stoi(values[8]), stoi(values[9]), values[10], stoi(values[11]), values[12], values[13], values[14])));
+                a.push_back(shared_ptr<AnfibioExotico>(new AnfibioExotico(stoi(values[1]), values[2], values[3], values[4], *values[5].c_str(), stod(values[6]), values[7], stoi(values[8]), stoi(values[9]), values[10], stoi(values[11]), values[12], values[13], values[14])));
                 break;
             case 8:
-                a.push_back(shared_ptr<AveNativa>(new AveNativa(stoi(values[1]), values[2], values[3], values[4], *values[5].c_str(), stoi(values[6]), values[7], stoi(values[8]), stoi(values[9]), values[10], stoi(values[11]), stoi(values[12]), values[13], values[14], values[15])));
+                a.push_back(shared_ptr<AveNativa>(new AveNativa(stoi(values[1]), values[2], values[3], values[4], *values[5].c_str(), stod(values[6]), values[7], stoi(values[8]), stoi(values[9]), values[10], stoi(values[11]), stoi(values[12]), values[13], values[14], values[15])));
                 break;
             case 9:
-                a.push_back(shared_ptr<AveExotica>(new AveExotica(stoi(values[1]), values[2], values[3], values[4], *values[5].c_str(), stoi(values[6]), values[7], stoi(values[8]), stoi(values[9]), values[10], stoi(values[11]), stoi(values[12]), values[13], values[14])));
+                a.push_back(shared_ptr<AveExotica>(new AveExotica(stoi(values[1]), values[2], values[3], values[4], *values[5].c_str(), stod(values[6]), values[7], stoi(values[8]), stoi(values[9]), values[10], stoi(values[11]), stoi(values[12]), values[13], values[14])));
                 break;
             case 10:
-                a.push_back(shared_ptr<ReptilNativo>(new ReptilNativo(stoi(values[1]), values[2], values[3], values[4], *values[5].c_str(), stoi(values[6]), values[7], stoi(values[8]), stoi(values[9]), values[10], stoi(values[11]), values[12], values[13], values[14], values[15])));
+                a.push_back(shared_ptr<ReptilNativo>(new ReptilNativo(stoi(values[1]), values[2], values[3], values[4], *values[5].c_str(), stod(values[6]), values[7], stoi(values[8]), stoi(values[9]), values[10], stoi(values[11]), values[12], values[13], values[14], values[15])));
                 break;
             case 11:
-                a.push_back(shared_ptr<ReptilExotico>(new ReptilExotico(stoi(values[1]), values[2], values[3], values[4], *values[5].c_str(), stoi(values[6]), values[7], stoi(values[8]), stoi(values[9]), values[10], stoi(values[11]), values[12], values[13], values[14])));
+                a.push_back(shared_ptr<ReptilExotico>(new ReptilExotico(stoi(values[1]), values[2], values[3], values[4], *values[5].c_str(), stod(values[6]), values[7], stoi(values[8]), stoi(values[9]), values[10], stoi(values[11]), values[12], values[13], values[14])));
                 break;
             }
         }
@@ -307,7 +307,7 @@ void cadastrarMamiferoExotico(vector<shared_ptr<Animal>> &a) {
 }
 
 //Função com menu para escolher se o mamifero é domestico, nativo ou exotico
-void casdastrarMamifero(vector<shared_ptr<Animal>> &a) {
+void cadastrarMamifero(vector<shared_ptr<Animal>> &a) {
     string input;
     int escolha;
     bool sair = false, error = false;
@@ -365,6 +365,112 @@ void casdastrarMamifero(vector<shared_ptr<Animal>> &a) {
     } while (!sair);
 }
 
+//Função para cadastrar um anfibio domestico
+void cadastrarAnfibioDomestico(vector<shared_ptr<Animal>> &a) {
+    int id, tratador, veterinario, total_de_mudas;
+    string nome, nome_cientifico, dieta, batismo, ultima_muda;
+    char sexo;
+    double tamanho;
+
+    cout << "Digite as informaçoes do novo animal: " << endl;
+    cout << "ID: ";
+    cin >> id;
+
+    vector<shared_ptr<Animal>>::iterator it = find_if(a.begin(), a.end(), [&id](const shared_ptr<Animal> & obj) {return obj->getId() == id;});
+    if( it != a.end() ) {
+        cout << endl << "Já existe um animal cadastrado com esse ID" << endl << endl;
+        cin.ignore();
+    } else {
+        cout << "Nome: ";
+        cin.ignore();
+        getline(cin, nome);
+        cout << "Nome Cientifico: ";
+        getline(cin, nome_cientifico);
+        cout << "Sexo: ";
+        cin >> sexo;
+        cout << "Tamanho: ";
+        cin >> tamanho;
+        cout << "Dieta: ";
+        cin.ignore();
+        getline(cin, dieta);
+        cout << "ID do tratador ( Digite 0 caso nao tenha tratador): ";
+        cin >> tratador;
+        cout << "ID do veterinario ( Digite 0 caso nao tenha veterinario ): ";
+        cin >> veterinario;
+        cout << "Nome de batismo: ";
+        cin.ignore();
+        getline(cin, batismo);
+        cout << "Total de mudas: ";
+        cin >> total_de_mudas;
+        cout << "Ultima muda: ";
+        cin.ignore();
+        getline(cin, ultima_muda);
+
+        a.push_back(shared_ptr<Anfibio>(new Anfibio(id, "Amphibia", nome, nome_cientifico, sexo, tamanho, dieta, tratador, veterinario, batismo, total_de_mudas, ultima_muda)));
+
+        cout << endl << "Novo animal cadastrado com sucesso!" << endl << endl;
+    }
+}
+
+//Função com menu para escolher se o anfibio é domestico, nativo ou exotico
+void cadastrarAnfibio(vector<shared_ptr<Animal>> &a) {
+    string input;
+    int escolha;
+    bool sair = false, error = false;
+
+    //Loop para verificar se o input é uma opção válida e caso seja, realizer a operação referente a escolha
+    do {
+        clear();
+        cout << endl << "########################################################" << endl;
+        cout << "###                  NOVO ANFIBIO                    ###" << endl;
+        cout << "########################################################" << endl;
+        cout << endl << "Escolha o tipo do novo mamifero: " << endl << endl;
+        cout << "[1] - Domestico" << endl;
+        cout << "[2] - Nativo" << endl;
+        cout << "[3] - Exotico" << endl;
+        cout << endl;
+        cout << "[0] - Sair" << endl << endl;
+
+        if (error) {
+            error = false;
+            cout << "**Digite uma opcao valida!**" << endl;
+        }
+        cout << "Opcao: ";
+        cin >> input;
+
+        if (checarDigito(input)) {
+            escolha = stoi(input, nullptr);
+
+            if (escolha >= 0 && escolha <= 3) {
+                switch (escolha) {
+                case 0:
+                    sair = true;
+                    break;
+                case 1:
+                    clear();
+                    cadastrarAnfibioDomestico(a);
+                    pressToCont();
+                    break;
+                case 2:
+                    clear();
+                    //cadastrarMamiferoNativo(a);
+                    pressToCont();
+                    break;
+                case 3:
+                    clear();
+                    //cadastrarMamiferoExotico(a);
+                    pressToCont();
+                    break;
+                }
+            } else {
+                error = true;
+            }
+        } else {
+            error = true;
+        }
+    } while (!sair); 
+}
+
 //Função para cadastrar um novo animal
 void cadastrarAnimal(vector<shared_ptr<Animal>> &a) {
     string input;
@@ -402,11 +508,13 @@ void cadastrarAnimal(vector<shared_ptr<Animal>> &a) {
                     break;
                 case 1:
                     clear();
-                    casdastrarMamifero(a);
+                    cadastrarMamifero(a);
                     pressToCont();
                     break;
                 case 2:
-                    //
+                    clear();
+                    cadastrarAnfibio(a);
+                    pressToCont();
                     break;
                 case 3:
                     //

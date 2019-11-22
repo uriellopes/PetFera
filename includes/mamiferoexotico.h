@@ -2,7 +2,7 @@
 #define MamiferoExotico_H
 
 #include "mamifero.h"
-#include "animalExotico.h"
+#include "animalexotico.h"
 
 class MamiferoExotico : public Mamifero, public AnimalExotico {
 public:
