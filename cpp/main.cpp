@@ -1063,6 +1063,23 @@ void cadastrarAnimal(vector<shared_ptr<Animal>> &a) {
     } while (!sair);
 }
 
+//Função para remover um animal
+void removerAnimal(vector<shared_ptr<Animal>> &a) {
+    int id;
+
+    cout << "Digite o ID do animal: ";
+    cin >> id;
+
+    vector<shared_ptr<Animal>>::iterator it = find_if(a.begin(), a.end(), [&id](const shared_ptr<Animal> & obj) {return obj->getId() == id;});
+    if( it != a.end() ) {
+        a.erase(it);
+        cout << "Animal removido com sucesso!" << endl;
+    } else {
+        cout << "Não existe animal com esse id cadastrado!" << endl;
+    }
+    cin.ignore();
+}
+
 //Menu de animais
 void menuAnimal(vector<shared_ptr<Animal>> &a) {
     string input;
@@ -1105,7 +1122,9 @@ void menuAnimal(vector<shared_ptr<Animal>> &a) {
                     pressToCont();
                     break;
                 case 2:
-                    //
+                    clear();
+                    removerAnimal(a);
+                    pressToCont();
                     break;
                 case 3:
                     //
