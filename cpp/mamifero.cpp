@@ -56,6 +56,7 @@ void Mamifero::atualizarDados() {
 
 void Mamifero::mostrarDados() {
 	cout << "Mamifero Domestico" << endl;
+	cout << "ID: " << id << endl;
 	cout << "Classe: " << classe << endl;
 	cout << "Nome: " << nome << endl;
 	cout << "Nome Cientifico: " << nome_cientifico << endl;

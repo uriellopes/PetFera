@@ -64,6 +64,7 @@ void MamiferoNativo::atualizarDados() {
 
 void MamiferoNativo::mostrarDados() {
 	cout << "Mamifero Silvestre Nativo" << endl;
+	cout << "ID: " << id << endl;
 	cout << "Classe: " << classe << endl;
 	cout << "Nome: " << nome << endl;
 	cout << "Nome Cientifico: " << nome_cientifico << endl;

@@ -12,3 +12,9 @@ std::ostream& operator<< (std::ostream &o, Animal &f) {
 int Animal::getId() {
     return id;
 }
+
+void Animal::mostrarAnimais(int t) {
+    if( tipo == t ) {
+        mostrarDados();
+    }
+}

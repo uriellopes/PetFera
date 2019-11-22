@@ -1113,6 +1113,59 @@ void consultarAnimal(vector<shared_ptr<Animal>> &a) {
     cin.ignore();
 }
 
+//Funcao para mostrar os animais de acordo com a classe
+void mostrarAnimais(vector<shared_ptr<Animal>> &a) {
+    string input;
+    int escolha;
+    bool sair = false, error = false;
+
+    //Loop para verificar se o input é uma opção válida e caso seja, realizer a operação referente a escolha
+    do {
+        clear();
+        cout << endl << "#########################################################" << endl;
+        cout << "###                      ANIMAIS                     ###" << endl;
+        cout << "#########################################################" << endl;
+        cout << endl << "Escolha o tipo de animal: " << endl << endl;
+        cout << "[1] - Mamifero" << endl;
+        cout << "[2] - Anfibio" << endl;
+        cout << "[3] - Ave" << endl;
+        cout << "[4] - Reptil" << endl;
+        cout << endl;
+        cout << "[0] - Sair" << endl << endl;
+
+        if (error) {
+            error = false;
+            cout << "**Digite uma opcao valida!**" << endl;
+        }
+        cout << "Opcao: ";
+        cin >> input;
+
+        if (checarDigito(input)) {
+            escolha = stoi(input, nullptr);
+
+            if (escolha >= 0 && escolha <= 4) {
+                switch (escolha) {
+                case 0:
+                    sair = true;
+                    break;
+                default:
+                    clear();
+                    for (unsigned i = 0; i < a.size(); i++) {
+                        a[i]->mostrarAnimais(escolha - 1);
+                    }
+                    cin.ignore();
+                    pressToCont();             
+                    break;
+                }
+            } else {
+                error = true;
+            }
+        } else {
+            error = true;
+        }
+    } while (!sair);
+}
+
 //Menu de animais
 void menuAnimal(vector<shared_ptr<Animal>> &a) {
     string input;
@@ -1170,7 +1223,9 @@ void menuAnimal(vector<shared_ptr<Animal>> &a) {
                     pressToCont();
                     break;
                 case 5:
-                    //
+                    clear();
+                    mostrarAnimais(a);
+                    pressToCont();
                     break;
                 }
             } else {

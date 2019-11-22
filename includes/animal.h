@@ -25,6 +25,7 @@ public:
 	int getId();
 	virtual void atualizarDados() = 0;
 	virtual void mostrarDados() = 0;
+	void mostrarAnimais(int f);
 };
 
 #endif

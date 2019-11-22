@@ -60,6 +60,7 @@ void Ave::atualizarDados() {
 
 void Ave::mostrarDados() {
 	cout << "Ave Domestica" << endl;
+	cout << "ID: " << id << endl;
 	cout << "Classe: " << classe << endl;
 	cout << "Nome: " << nome << endl;
 	cout << "Nome Cientifico: " << nome_cientifico << endl;

@@ -65,6 +65,7 @@ void AnfibioExotico::atualizarDados() {
 
 void AnfibioExotico::mostrarDados() {
 	cout << "Anfibio Silvestre Exotico" << endl;
+	cout << "ID: " << id << endl;
 	cout << "Classe: " << classe << endl;
 	cout << "Nome: " << nome << endl;
 	cout << "Nome Cientifico: " << nome_cientifico << endl;

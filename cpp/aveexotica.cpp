@@ -65,6 +65,7 @@ void AveExotica::atualizarDados() {
 
 void AveExotica::mostrarDados() {
 	cout << "Ave Silvestre Exotica" << endl;
+	cout << "ID: " << id << endl;
 	cout << "Classe: " << classe << endl;
 	cout << "Nome: " << nome << endl;
 	cout << "Nome Cientifico: " << nome_cientifico << endl;
