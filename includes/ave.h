@@ -12,6 +12,7 @@ public:
     Ave();
     ~Ave();
     void print(std::ostream &o);
+    void atualizarDados();
 };
 
 #endif

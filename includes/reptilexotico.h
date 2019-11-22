@@ -9,6 +9,7 @@ public:
     ReptilExotico(int, string, string, string, char, double, string, int, int, string, bool, string, string, string);
     ~ReptilExotico();
     void print(std::ostream &o);
+    void atualizarDados();
 };
 
 #endif

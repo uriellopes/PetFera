@@ -23,6 +23,7 @@ public:
 	friend std::ostream& operator<< (std::ostream &o, Animal &a);
 	virtual void print(std::ostream &o) = 0;
 	int getId();
+	virtual void atualizarDados() = 0;
 };
 
 #endif

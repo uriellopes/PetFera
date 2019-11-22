@@ -12,6 +12,7 @@ public:
     Reptil();
     ~Reptil();
     void print(std::ostream &o);
+    void atualizarDados();
 };
 
 #endif

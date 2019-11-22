@@ -1080,6 +1080,23 @@ void removerAnimal(vector<shared_ptr<Animal>> &a) {
     cin.ignore();
 }
 
+//Função para alterar dados de um animal
+void alterarAnimal(vector<shared_ptr<Animal>> &a) {
+    int id;        
+
+    cout << "Digite o ID do animal: ";
+    cin >> id;
+
+    vector<shared_ptr<Animal>>::iterator it = find_if(a.begin(), a.end(), [&id](const shared_ptr<Animal> & obj) {return obj->getId() == id;});
+    if( it != a.end() ) {
+        a[std::distance(a.begin(), it)]->atualizarDados();
+        cout << endl << "Informacoes do animal atualizadas com sucesso!" << endl << endl;
+    } else {
+        cout << endl << "Não existe animal com esse id cadastrado!" << endl << endl;
+        cin.ignore();
+    }
+}
+
 //Menu de animais
 void menuAnimal(vector<shared_ptr<Animal>> &a) {
     string input;
@@ -1095,9 +1112,9 @@ void menuAnimal(vector<shared_ptr<Animal>> &a) {
         cout << endl << "Escolha uma das seguintes opcoes: " << endl << endl;
         cout << "[1] - Adicionar novo animal" << endl;
         cout << "[2] - Remover animal" << endl;
-        cout << "[4] - Alterar dados de um animal" << endl;
-        cout << "[5] - Consultar animal" << endl;
-        cout << "[6] - Mostrar animais" << endl;
+        cout << "[3] - Alterar dados de um animal" << endl;
+        cout << "[4] - Consultar animal" << endl;
+        cout << "[5] - Mostrar animais" << endl;
         cout << endl;
         cout << "[0] - Sair" << endl << endl;
 
@@ -1127,15 +1144,14 @@ void menuAnimal(vector<shared_ptr<Animal>> &a) {
                     pressToCont();
                     break;
                 case 3:
-                    //
+                    clear();
+                    alterarAnimal(a);
+                    pressToCont();
                     break;
                 case 4:
                     //
                     break;
                 case 5:
-                    //
-                    break;
-                case 6:
                     //
                     break;
                 }

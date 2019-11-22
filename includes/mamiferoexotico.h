@@ -9,6 +9,7 @@ public:
     MamiferoExotico(int, string, string, string, char, double, string, int, int, string, string, string, string);
     ~MamiferoExotico();
     void print(std::ostream &o);
+    void atualizarDados();
 };
 
 #endif

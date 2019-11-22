@@ -9,6 +9,7 @@ public:
     MamiferoNativo(int, string, string, string, char, double, string, int, int, string, string, string, string, string);
     ~MamiferoNativo();
     void print(std::ostream &o);
+    void atualizarDados();
 };
 
 #endif

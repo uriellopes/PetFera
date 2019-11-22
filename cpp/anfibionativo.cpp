@@ -1,5 +1,7 @@
 #include "../includes/anfibionativo.h"
 #include <iostream>
+using std::cout;
+using std::cin;
 
 AnfibioNativo::AnfibioNativo(int a, string b, string c, string d, char e, double f, string g, int h, int i, string j, int k, string l, string m, string n, string o) {
 	tipo = 1;
@@ -28,4 +30,37 @@ void AnfibioNativo::print(std::ostream &o) {
 	<< dieta << ";" << tratador << ";" << veterinario << ";" 
 	<< batismo << ";" << total_de_mudas << ";" << ultima_muda << ";"
 	<< uf_origem << ";" << autorizacao << ";" << autoriazacao_ibama;
+}
+
+void AnfibioNativo::atualizarDados() {
+	cout << "Nome: ";
+	cin.ignore();
+	getline(cin, nome);
+	cout << "Nome Cientifico: ";
+	getline(cin, nome_cientifico);
+	cout << "Sexo: ";
+	cin >> sexo;
+	cout << "Tamanho: ";
+	cin >> tamanho;
+	cout << "Dieta: ";
+	cin.ignore();
+	getline(cin, dieta);
+	cout << "ID do tratador ( Digite 0 caso nao tenha tratador): ";
+	cin >> tratador;
+	cout << "ID do veterinario ( Digite 0 caso nao tenha veterinario ): ";
+	cin >> veterinario;
+	cout << "Nome de batismo: ";
+	cin.ignore();
+	getline(cin, batismo);
+	cout << "Total de mudas: ";
+	cin >> total_de_mudas;
+	cout << "Ultima muda: ";
+	cin.ignore();
+	getline(cin, ultima_muda);
+	cout << "UF da origem: ";
+	getline(cin, uf_origem);
+	cout << "Autorizacao: ";
+	getline(cin, autorizacao);
+	cout << "Autorizacao do Ibama: ";
+	getline(cin, autoriazacao_ibama);
 }
