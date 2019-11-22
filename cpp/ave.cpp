@@ -2,6 +2,7 @@
 #include <iostream>
 using std::cout;
 using std::cin;
+using std::endl;
 
 Ave::Ave(int a, string b, string c, string d, char e, double f, string g, int h, int i, string j, double k, double l) {
 	tipo = 2;
@@ -55,4 +56,19 @@ void Ave::atualizarDados() {
 	cout << "Envergadura das asas: ";
 	cin >> envergadura_das_asas;
 	cin.ignore();
+}
+
+void Ave::mostrarDados() {
+	cout << "Ave Domestica" << endl;
+	cout << "Classe: " << classe << endl;
+	cout << "Nome: " << nome << endl;
+	cout << "Nome Cientifico: " << nome_cientifico << endl;
+	cout << "Sexo: " << sexo << endl;
+	cout << "Tamanho: " << tamanho << endl;
+	cout << "Dieta: " << dieta << endl;
+	cout << "ID do tratador: " << tratador << endl;
+	cout << "ID do veterinario: " << veterinario << endl;
+	cout << "Nome de batismo: " << batismo << endl;
+	cout << "Tamanho do bico: " << tamanho_do_bico_cm << endl;
+	cout << "Envergadura das asas: " << envergadura_das_asas << endl << endl;
 }

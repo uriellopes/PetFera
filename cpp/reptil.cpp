@@ -2,6 +2,7 @@
 #include <iostream>
 using std::cout;
 using std::cin;
+using std::endl;
 
 Reptil::Reptil(int a, string b, string c, string d, char e, double f, string g, int h, int i, string j, bool k, string l) {
 	tipo = 3;
@@ -55,4 +56,24 @@ void Reptil::atualizarDados() {
 	cout << "Tipo do veneno: ";
 	cin.ignore();
 	getline(cin, tipo_veneno);
+}
+
+void Reptil::mostrarDados() {
+	cout << "Reptil Domestico" << endl;
+	cout << "Classe: " << classe << endl;
+	cout << "Nome: " << nome << endl;
+	cout << "Nome Cientifico: " << nome_cientifico << endl;
+	cout << "Sexo: " << sexo << endl;
+	cout << "Tamanho: " << tamanho << endl;
+	cout << "Dieta: " << dieta << endl;
+	cout << "ID do tratador: " << tratador << endl;
+	cout << "ID do veterinario: " << veterinario << endl;
+	cout << "Nome de batismo: " << batismo << endl;
+	cout << "Venenoso: ";
+	if( venenoso ) {
+		cout << "Sim" << endl;
+	} else {
+		cout << "Nao" << endl;
+	}
+	cout << "Tipo do veneno: " << tipo_veneno << endl << endl;
 }

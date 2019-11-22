@@ -24,6 +24,7 @@ public:
 	virtual void print(std::ostream &o) = 0;
 	int getId();
 	virtual void atualizarDados() = 0;
+	virtual void mostrarDados() = 0;
 };
 
 #endif

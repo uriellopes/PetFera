@@ -1097,6 +1097,22 @@ void alterarAnimal(vector<shared_ptr<Animal>> &a) {
     }
 }
 
+//Função para consultar as informacoes de um animal
+void consultarAnimal(vector<shared_ptr<Animal>> &a) {
+    int id;        
+
+    cout << "Digite o ID do animal: ";
+    cin >> id;
+
+    vector<shared_ptr<Animal>>::iterator it = find_if(a.begin(), a.end(), [&id](const shared_ptr<Animal> & obj) {return obj->getId() == id;});
+    if( it != a.end() ) {
+        a[std::distance(a.begin(), it)]->mostrarDados();
+    } else {
+        cout << endl << "Não existe animal com esse id cadastrado!" << endl << endl;
+    }
+    cin.ignore();
+}
+
 //Menu de animais
 void menuAnimal(vector<shared_ptr<Animal>> &a) {
     string input;
@@ -1149,7 +1165,9 @@ void menuAnimal(vector<shared_ptr<Animal>> &a) {
                     pressToCont();
                     break;
                 case 4:
-                    //
+                    clear();
+                    consultarAnimal(a);
+                    pressToCont();
                     break;
                 case 5:
                     //

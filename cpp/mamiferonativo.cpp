@@ -2,6 +2,7 @@
 #include <iostream>
 using std::cout;
 using std::cin;
+using std::endl;
 
 MamiferoNativo::MamiferoNativo(int a, string b, string c, string d, char e, double f, string g, int h, int i, string j, string k, string l, string m, string n) {
 	tipo = 0;
@@ -59,4 +60,21 @@ void MamiferoNativo::atualizarDados() {
     getline(cin, autorizacao);
     cout << "Autorizacao do Ibama: ";
     getline(cin, autoriazacao_ibama);
+}
+
+void MamiferoNativo::mostrarDados() {
+	cout << "Mamifero Silvestre Nativo" << endl;
+	cout << "Classe: " << classe << endl;
+	cout << "Nome: " << nome << endl;
+	cout << "Nome Cientifico: " << nome_cientifico << endl;
+	cout << "Sexo: " << sexo << endl;
+	cout << "Tamanho: " << tamanho << endl;
+	cout << "Dieta: " << dieta << endl;
+	cout << "ID do tratador: " << tratador << endl;
+	cout << "ID do veterinario: " << veterinario << endl;
+	cout << "Nome de batismo: " << batismo << endl;
+	cout << "Cor do pelo: " << cor_do_pelo << endl;
+	cout << "UF de origem: " << uf_origem << endl;
+    cout << "Autorizacao: " << autorizacao << endl;
+    cout << "Autorizacao do Ibama: " << autoriazacao_ibama << endl << endl;
 }

@@ -10,6 +10,7 @@ public:
     ~ReptilExotico();
     void print(std::ostream &o);
     void atualizarDados();
+    void mostrarDados();
 };
 
 #endif
