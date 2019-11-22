@@ -465,6 +465,57 @@ void cadastrarAnfibioNativo(vector<shared_ptr<Animal>> &a) {
     }
 }
 
+//Função para cadastrar um anfibio exotico
+void cadastrarAnfibioExotico(vector<shared_ptr<Animal>> &a) {
+    int id, tratador, veterinario, total_de_mudas;
+    string nome, nome_cientifico, dieta, batismo, ultima_muda, pais_origem, autorizacao_ibama;
+    char sexo;
+    double tamanho;
+
+    cout << "Digite as informaçoes do novo animal: " << endl;
+    cout << "ID: ";
+    cin >> id;
+
+    vector<shared_ptr<Animal>>::iterator it = find_if(a.begin(), a.end(), [&id](const shared_ptr<Animal> & obj) {return obj->getId() == id;});
+    if( it != a.end() ) {
+        cout << endl << "Já existe um animal cadastrado com esse ID" << endl << endl;
+        cin.ignore();
+    } else {
+        cout << "Nome: ";
+        cin.ignore();
+        getline(cin, nome);
+        cout << "Nome Cientifico: ";
+        getline(cin, nome_cientifico);
+        cout << "Sexo: ";
+        cin >> sexo;
+        cout << "Tamanho: ";
+        cin >> tamanho;
+        cout << "Dieta: ";
+        cin.ignore();
+        getline(cin, dieta);
+        cout << "ID do tratador ( Digite 0 caso nao tenha tratador): ";
+        cin >> tratador;
+        cout << "ID do veterinario ( Digite 0 caso nao tenha veterinario ): ";
+        cin >> veterinario;
+        cout << "Nome de batismo: ";
+        cin.ignore();
+        getline(cin, batismo);
+        cout << "Total de mudas: ";
+        cin >> total_de_mudas;
+        cout << "Ultima muda: ";
+        cin.ignore();
+        getline(cin, ultima_muda);
+        cout << "Pais de origem: ";
+        getline(cin, pais_origem);
+        cout << "Autorizacao do Ibama: ";
+        getline(cin, autorizacao_ibama);
+
+        a.push_back(shared_ptr<AnfibioExotico>(new AnfibioExotico(id, "Amphibia", nome, nome_cientifico, sexo, tamanho, dieta, tratador, veterinario, batismo, total_de_mudas, ultima_muda, pais_origem, autorizacao_ibama)));
+
+        cout << endl << "Novo animal cadastrado com sucesso!" << endl << endl;
+    }
+}
+
 //Função com menu para escolher se o anfibio é domestico, nativo ou exotico
 void cadastrarAnfibio(vector<shared_ptr<Animal>> &a) {
     string input;
@@ -511,7 +562,7 @@ void cadastrarAnfibio(vector<shared_ptr<Animal>> &a) {
                     break;
                 case 3:
                     clear();
-                    //cadastrarMamiferoExotico(a);
+                    cadastrarAnfibioExotico(a);
                     pressToCont();
                     break;
                 }
