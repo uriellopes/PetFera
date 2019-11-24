@@ -1113,6 +1113,37 @@ void consultarAnimal(vector<shared_ptr<Animal>> &a) {
     cin.ignore();
 }
 
+//Função para consultar um animal sob a responsabilidade de um tratador ou veterinario
+void consultarAnimalPorFuncionario(vector<shared_ptr<Animal>> &a, vector<shared_ptr<Funcionario>> &f) {
+    int id;        
+    bool existe = false;
+
+    cout << "Digite o ID do tratador ou do veterinario: ";
+    cin >> id;
+
+    vector<shared_ptr<Funcionario>>::iterator it = find_if(f.begin(), f.end(), [&id](const shared_ptr<Funcionario> & obj) {return obj->getId() == id;});
+    if( it != f.end() ) {
+        for (unsigned i = 0; i < a.size(); i++) {
+            if( a[i]->getIdTratador() == id || a[i]->getIdVeterinario() == id) {
+                a[i]->mostrarDados();
+                existe = true;
+            }
+        }
+        if( !existe ) {
+            cout << endl << "Não existe nenhum animal aos cuidados desse funcionario" << endl << endl;
+        }
+    } else {
+        cout << endl << "Não existe tratador ou veterinario com esse id cadastrado!" << endl << endl;
+    }
+    // vector<shared_ptr<Animal>>::iterator it = find_if(a.begin(), a.end(), [&id](const shared_ptr<Animal> & obj) {return obj->getIdTratador() == id || obj->getIdVenterinario() == id;});
+    // if( it != a.end() ) {
+    //     a[std::distance(a.begin(), it)]->mostrarDados();
+    // } else {
+    //     cout << endl << "Não existe animal com esse id cadastrado!" << endl << endl;
+    // }
+    cin.ignore();
+}
+
 //Funcao para mostrar os animais de acordo com a classe
 void mostrarAnimais(vector<shared_ptr<Animal>> &a) {
     string input;
@@ -1167,7 +1198,7 @@ void mostrarAnimais(vector<shared_ptr<Animal>> &a) {
 }
 
 //Menu de animais
-void menuAnimal(vector<shared_ptr<Animal>> &a) {
+void menuAnimal(vector<shared_ptr<Animal>> &a, vector<shared_ptr<Funcionario>> &f) {
     string input;
     int escolha;
     bool sair = false, error = false;
@@ -1183,7 +1214,8 @@ void menuAnimal(vector<shared_ptr<Animal>> &a) {
         cout << "[2] - Remover animal" << endl;
         cout << "[3] - Alterar dados de um animal" << endl;
         cout << "[4] - Consultar animal" << endl;
-        cout << "[5] - Mostrar animais" << endl;
+        cout << "[5] - Consultar animais sob responsabilidade de um tratador ou veterinario" << endl;
+        cout << "[6] - Mostrar animais" << endl;
         cout << endl;
         cout << "[0] - Sair" << endl << endl;
 
@@ -1223,6 +1255,11 @@ void menuAnimal(vector<shared_ptr<Animal>> &a) {
                     pressToCont();
                     break;
                 case 5:
+                    clear();
+                    consultarAnimalPorFuncionario(a, f);
+                    pressToCont();
+                    break;
+                case 6:
                     clear();
                     mostrarAnimais(a);
                     pressToCont();
@@ -1528,7 +1565,7 @@ void menuPrincipal(vector<shared_ptr<Funcionario>> &f, vector<shared_ptr<Animal>
                     sair = true;
                     break;
                 case 1:
-                    menuAnimal(a);
+                    menuAnimal(a, f);
                     break;
                 case 2:
                     menuFuncionarios(f);

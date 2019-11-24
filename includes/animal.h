@@ -26,6 +26,8 @@ public:
 	virtual void atualizarDados() = 0;
 	virtual void mostrarDados() = 0;
 	void mostrarAnimais(int f);
+	int getIdTratador();
+	int getIdVeterinario();
 };
 
 #endif

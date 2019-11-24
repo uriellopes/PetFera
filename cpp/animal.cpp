@@ -18,3 +18,11 @@ void Animal::mostrarAnimais(int t) {
         mostrarDados();
     }
 }
+
+int Animal::getIdTratador() {
+    return tratador;
+}
+
+int Animal::getIdVeterinario() {
+    return veterinario;
+}
