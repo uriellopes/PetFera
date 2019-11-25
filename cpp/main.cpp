@@ -1135,12 +1135,6 @@ void consultarAnimalPorFuncionario(vector<shared_ptr<Animal>> &a, vector<shared_
     } else {
         cout << endl << "Não existe tratador ou veterinario com esse id cadastrado!" << endl << endl;
     }
-    // vector<shared_ptr<Animal>>::iterator it = find_if(a.begin(), a.end(), [&id](const shared_ptr<Animal> & obj) {return obj->getIdTratador() == id || obj->getIdVenterinario() == id;});
-    // if( it != a.end() ) {
-    //     a[std::distance(a.begin(), it)]->mostrarDados();
-    // } else {
-    //     cout << endl << "Não existe animal com esse id cadastrado!" << endl << endl;
-    // }
     cin.ignore();
 }
 
@@ -1292,7 +1286,6 @@ void novoTratador(vector<shared_ptr<Funcionario>> &f) {
         cin.ignore();
         getline(cin, nome);
         cout << "CPF: ";
-        cin.ignore();
         getline(cin, cpf);
         cout << "Idade: ";
         cin >> idade;
@@ -1332,7 +1325,6 @@ void novoVeterinario(vector<shared_ptr<Funcionario>> &f) {
         cin.ignore();
         getline(cin, nome);
         cout << "CPF: ";
-        cin.ignore();
         getline(cin, cpf);
         cout << "Idade: ";
         cin >> idade;
@@ -1345,13 +1337,13 @@ void novoVeterinario(vector<shared_ptr<Funcionario>> &f) {
         cin.ignore();
         getline(cin, especialidade);
         cout << "CRMV: ";
-        cin >> crmv;
+        getline(cin, crmv);
 
         f.push_back(shared_ptr<Veterinario>(new Veterinario(id, nome, cpf, idade, tipo_sanguineo, fator_rh, especialidade, crmv)));
 
         cout << endl << "Novo veterinario cadastrado com sucesso!" << endl << endl;
     }
-    cin.ignore();
+    //cin.ignore();
 }
 
 //Função para remover um funcionario
