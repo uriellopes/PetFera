@@ -155,7 +155,7 @@ void salvarDados(vector<shared_ptr<Funcionario>> &f, vector<shared_ptr<Animal>> 
 
     file_funcionarios.close();
 
-    ofstream file_animais("teste.csv");
+    ofstream file_animais("animais.csv");
 
     for (unsigned i = 0; i < a.size(); i++) {
         file_animais << *a[i] << endl;

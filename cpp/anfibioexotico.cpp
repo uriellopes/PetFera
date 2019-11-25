@@ -70,7 +70,7 @@ void AnfibioExotico::mostrarDados() {
 	cout << "Nome: " << nome << endl;
 	cout << "Nome Cientifico: " << nome_cientifico << endl;
 	cout << "Sexo: " << sexo << endl;
-	cout << "Tamanho: " << tamanho << endl;
+	cout << "Tamanho: " << tamanho << "m" << endl;
 	cout << "Dieta: " << dieta << endl;
 	cout << "ID do tratador: " << tratador << endl;
 	cout << "ID do veterinario: " << veterinario << endl;
